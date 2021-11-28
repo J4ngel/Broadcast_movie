@@ -1,3 +1,4 @@
+import 'package:broadcast_movie/ui/pages/near_me/near_me.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 import '../chat/chat.dart';
@@ -10,7 +11,7 @@ class NavagationBar extends StatefulWidget {
 
 class _NavagationBarState extends State<NavagationBar> {
   int _paginaActual = 0;
-  final List<Widget> _paginas = [const Home(), const ChatPage()];
+  final List<Widget> _paginas = [const Home(), const ChatPage(), Near_me_page()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +26,7 @@ class _NavagationBarState extends State<NavagationBar> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Principal'),
           BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chat'),
+          BottomNavigationBarItem(icon: Icon(Icons.location_on),label: 'Cerca de mi')
         ],
       ),
     );
