@@ -12,6 +12,8 @@ class Near_me_page extends StatefulWidget {
 }
 
 class _Near_me_pageState extends State<Near_me_page> {
+  bool is_visible = false;
+  location_users my_info = location_users(name: "Andrés Rivera", address: "Cll 23 No 45-30");
   List<location_users> List_users = [
     location_users(
       name: "Alejandro Angarita",
@@ -36,14 +38,26 @@ class _Near_me_pageState extends State<Near_me_page> {
     
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: Text("Cerca de mi"),
+        /* Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Cerca de mi"),
             SizedBox(width: 50),
             IconButton(onPressed: (){}, icon: Icon(Icons.refresh))
           ],
-        ),
+        ), */
+        actions:[
+          Container(
+            padding: EdgeInsets.only(right: 20),
+            child:Row(
+              children: [
+                IconButton(onPressed: (){}, icon: Icon(Icons.refresh)),
+                IconButton(onPressed: (){}, icon: Icon(Icons.map))
+              ],
+            )
+          )
+        ],
         centerTitle: true,
         backgroundColor: currentTheme.isDarkTheme()
           ? const Color(0xff085373)
@@ -51,8 +65,20 @@ class _Near_me_pageState extends State<Near_me_page> {
       ),
 
       backgroundColor: currentTheme.isDarkTheme()
-        ? const Color(0XFF262D31)
-        : const Color(0XFFF8F9FA),
+        ? const Color(0XFF262D31) 
+        : const Color(0XFFCFCFCF),
+
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        setState(() {
+          is_visible = !is_visible;
+        });
+      },
+      child: Icon(Icons.gps_fixed), //assignment_ind
+      backgroundColor: currentTheme.isDarkTheme()
+          ? const Color(0xff085373)
+          : const Color(0xff711A1A),
+      tooltip: "Muestra tu ubicación al final de la lista",
+      ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
@@ -70,6 +96,56 @@ class _Near_me_pageState extends State<Near_me_page> {
                 );
               },
             ),
+
+            Visibility(
+              visible: is_visible,  
+              child: Container(
+                padding: EdgeInsets.only(left: 48, right: 48, top: 10, bottom: 10),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              padding:EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25), 
+                                color: currentTheme.isDarkTheme() 
+                                  ? Color(0xff50879E)
+                                  :Color(0xffB44646)),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    my_info.name,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: const Color(0xffFFFFFF),
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 6,
+                                  ),
+                                  Text(
+                                    "Dirección: "+my_info.address,
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        color: const Color(0xffFFFFFF)
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),  
+            )
           ],
         ),
       )
