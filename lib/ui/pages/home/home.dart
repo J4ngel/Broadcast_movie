@@ -20,23 +20,24 @@ class _HomeState extends State<Home> {
             ? const Color(0XFF262D31)
             : const Color(0XFFF8F9FA),
         appBar: AppBar(
-          title: Row(
-            children: <Widget>[
-              const Text('Material App Bar'),
-              Container(
-                margin: const EdgeInsets.only(
-                  left: 150.0,
-                ),
-                child: Switch(
+          title: Column(crossAxisAlignment:CrossAxisAlignment.start,
+          children: <Widget>[
+            Text('Broadcast', style: TextStyle(fontWeight: FontWeight.bold),),
+            Text('movie')]
+            ),
+          /* centerTitle: true,
+          leading: currentTheme.isDarkTheme()
+            ? Image.asset("logo_dark.png")
+            : Image.asset("logo_light.png"), */
+          actions: [
+            Switch(
                     value: currentTheme.isDarkTheme(),
                     onChanged: (value) {
                       String newTheme =
                           value ? ThemePreference.DARK : ThemePreference.LIGHT;
                       currentTheme.setTheme = newTheme;
-                    }),
-              )
-            ],
-          ),
+                    })
+          ],
           backgroundColor: currentTheme.isDarkTheme()
               ? const Color(0xff085373)
               : const Color(0xff711A1A),
@@ -62,7 +63,7 @@ class _HomeState extends State<Home> {
                   contentPadding: EdgeInsets.all(8),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color:Colors.grey.shade100)
+                    borderSide: BorderSide(color:currentTheme.isDarkTheme() ? Colors.grey.shade100:Color(0xff711A1A))
                   )
                 ),
               ),
@@ -71,6 +72,10 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.only(top:10),
                   child: ListView(
                     children: [
+                      card_movie(img: "url", title: "title", year: "year", info: "infoadsaisodjaosjidaoisjdoasjdoaijsdoiajsoidjaosidjasiojdoiasjdoi"),
+                      card_movie(img: "url", title: "title", year: "year", info: "info"),
+                      card_movie(img: "url", title: "title", year: "year", info: "infoadsaisodjaosjidaoisjdoasjdoaijsdoiajsoidjaosidjasiojdoiasjdoi"),
+                      card_movie(img: "url", title: "title", year: "year", info: "info"),
                       card_movie(img: "url", title: "title", year: "year", info: "infoadsaisodjaosjidaoisjdoasjdoaijsdoiajsoidjaosidjasiojdoiasjdoi"),
                       card_movie(img: "url", title: "title", year: "year", info: "info")
                       ],

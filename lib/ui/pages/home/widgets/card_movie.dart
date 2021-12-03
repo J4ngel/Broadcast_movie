@@ -21,7 +21,12 @@ class card_movie extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(width: 120,height: 200, decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(8)),),
+            Image(
+              image: NetworkImage("https://cl.buscafs.com/www.tomatazos.com/public/uploads/images/170599/170599.jpg"),
+              width: 120,
+              height: 200,
+              fit: BoxFit.fill,
+              ),
 
             Expanded(child: Padding(
               padding: const EdgeInsets.only(left: 10,right: 10),
