@@ -24,10 +24,32 @@ class _NavagationBarState extends State<NavagationBar> {
         },
         currentIndex: _paginaActual,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Principal'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chat'),
-          BottomNavigationBarItem(icon: Icon(Icons.location_on),label: 'Cerca de mi')
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home), 
+            label: 'Principal', 
+            backgroundColor: Color(0xff085373)),
+            
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat), 
+            label: 'Chat',
+            backgroundColor: Color(0xff085373)),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.location_on),
+            label: 'Cerca de mi',
+            backgroundColor: Color(0xff085373)),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.groups_outlined),
+            label: 'Cerca de mi',
+            backgroundColor: Color(0xff085373)),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.local_movies_outlined),
+            label: 'Cerca de mi',
+            backgroundColor: Color(0xff085373)),
         ],
+        selectedItemColor: Colors.white,
       ),
     );
   }

@@ -39,14 +39,6 @@ class _Near_me_pageState extends State<Near_me_page> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Cerca de mi"),
-        /* Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("Cerca de mi"),
-            SizedBox(width: 50),
-            IconButton(onPressed: (){}, icon: Icon(Icons.refresh))
-          ],
-        ), */
         actions:[
           Container(
             padding: EdgeInsets.only(right: 20),
