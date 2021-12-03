@@ -3,6 +3,7 @@ import 'package:broadcast_movie/providers/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -21,7 +22,7 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           title: Row(
             children: <Widget>[
-              const Text('Material App Bar'),
+              const Text('Broadcast Movie'),
               Container(
                 margin: const EdgeInsets.only(
                   left: 150.0,
@@ -50,6 +51,7 @@ class _HomeState extends State<Home> {
                   : const Color(0xff262D31),
             ),
           ),
-        ));
+        )
+        );
   }
 }

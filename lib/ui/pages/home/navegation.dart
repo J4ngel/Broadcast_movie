@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
 import '../chat/chat.dart';
-import '../chat/mystatus.dart';
-import '../chat/feed.dart';
+import '../status/mystatus.dart';
+import '../feed/feed.dart';
 
 class NavagationBar extends StatefulWidget {
   const NavagationBar({Key? key}) : super(key: key);

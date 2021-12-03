@@ -3,7 +3,7 @@ import 'package:broadcast_movie/providers/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'widgets/conversionList.dart';
+import '../chat/widgets/conversionList.dart';
 
 class StatusPage extends StatefulWidget {
   const StatusPage({Key? key}) : super(key: key);
@@ -51,7 +51,7 @@ class _StatusPageState extends State<StatusPage> {
         time: "1 Nov"),
     ChatUsers(
         name: "Jhon Jairo Perez",
-        messageText: "Ja ja ja ja",
+        messageText: "Ja ja ja ja viendo el águila descalza",
         imageURL: "https://randomuser.me/api/portraits/men/17.jpg",
         time: "18 Feb"),
     ChatUsers(
@@ -89,7 +89,8 @@ class _StatusPageState extends State<StatusPage> {
                               ? const Color(0xffFFFFFF)
                               : const Color(0xff262D31)),
                     ),
-                    Container(
+
+                    /*Container(
                       padding:
                           EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 2),
                       height: 30,
@@ -118,21 +119,94 @@ class _StatusPageState extends State<StatusPage> {
                           ),
                         ],
                       ),
-                    )
+                    )*/
                   ],
                 ),
               ),
             ),
-            Padding(
+            /*Padding(
               padding: EdgeInsets.only(top: 16, left: 16, right: 16),
-
-              /*
+              child: Text(
+                "Add my status",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: currentTheme.isDarkTheme()
+                        ? const Color(0xffFFFFFF)
+                        : const Color(0xff262D31)),
+              ),
+            ),*/
+            
+            Align(
+              //alignment: Alignment.bottomLeft,
+              child: Container(
+                padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                height: 60,
+                width: double.infinity,
+                color: currentTheme.isDarkTheme()
+                    ? const Color(0xff131C21)
+                    : const Color(0xffEDEDED),
+                child: Row(
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                          color: currentTheme.isDarkTheme()
+                              ? const Color(0xff085373)
+                              : const Color(0xff711A1A),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        /*child: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 20,
+                        ),*/
+                      ),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            hintText: "Change my status...",
+                            hintStyle: TextStyle(
+                                color: currentTheme.isDarkTheme()
+                                    ? const Color(0xffFFFFFF)
+                                    : const Color(0xff262D31)),
+                            border: InputBorder.none),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    FloatingActionButton(
+                      onPressed: () {},
+                      child: Icon(
+                        Icons.send,
+                        color: Colors.white,
+                        size: 18,
+                      ),
+                      backgroundColor: currentTheme.isDarkTheme()
+                          ? const Color(0xff085373)
+                          : const Color(0xff711A1A),
+                      elevation: 0,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            /*Padding(
+              padding: EdgeInsets.only(top: 16, left: 16, right: 16),
               child: TextField(
                 decoration: InputDecoration(
-                  hintText: "Search...",
+                  hintText: "Add status",
                   hintStyle: TextStyle(color: Colors.grey.shade600),
                   prefixIcon: Icon(
-                    Icons.search,
+                    Icons.add,
                     color: Colors.grey.shade600,
                     size: 20,
                   ),
@@ -143,7 +217,18 @@ class _StatusPageState extends State<StatusPage> {
                       borderRadius: BorderRadius.circular(20),
                       borderSide: BorderSide(color: Colors.grey.shade100)),
                 ),
-              ),*/
+              ),
+            ),*/
+            Padding(
+              padding: EdgeInsets.only(top: 16, left: 16, right: 16),
+              child: Text(
+                "Recientes",
+                style: TextStyle(
+                    fontSize: 15,
+                    color: currentTheme.isDarkTheme()
+                        ? const Color(0xffFFFFFF)
+                        : const Color(0xff262D31)),
+              ),
             ),
             ListView.builder(
               itemCount: chatUsers.length,
