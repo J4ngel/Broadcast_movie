@@ -1,3 +1,5 @@
+import 'package:broadcast_movie/ui/pages/login/login.dart';
+import 'package:broadcast_movie/ui/pages/register/register.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -53,10 +55,8 @@ class _SplashScreenState extends State<SplashScreen> {
             onPressed: () {
               // ignore: todo
               // TODO: Redirect to register page
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (_) => HomePage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Register()));
             },
             child: const Text(
               'Register',
@@ -76,11 +76,8 @@ class _SplashScreenState extends State<SplashScreen> {
             onPressed: () {
               // ignore: todo
               // TODO: Redirect to login page
-
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (_) => HomePage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Login()));
             },
             child: const Text(
               'Login',

@@ -1,3 +1,6 @@
+import 'package:broadcast_movie/ui/pages/home/navegation.dart';
+import 'package:broadcast_movie/ui/pages/login/login.dart';
+import 'package:broadcast_movie/ui/pages/splash/splash.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -8,6 +11,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  // bool _selected = true;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -66,6 +70,11 @@ class _RegisterState extends State<Register> {
                                 onPressed: () {
                                   // ignore: todo
                                   // TODO: Return to initial page
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SplashScreen()));
                                 },
                                 iconSize: 30.0,
                                 color: Colors.white,
@@ -97,6 +106,9 @@ class _RegisterState extends State<Register> {
                                   labelText: 'Full Name',
                                   labelStyle: TextStyle(color: Colors.white),
                                   hintText: 'example@mail.com'),
+                              // onChanged: (text) {
+                              //   print('$text');
+                              // }
                             )),
                         const Padding(
                             padding: EdgeInsets.all(10.0),
@@ -157,6 +169,22 @@ class _RegisterState extends State<Register> {
                             ],
                           ),
                         ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: <Widget>[
+                        //     Text(_selected
+                        //         ? "Remember me"
+                        //         : "Don't remember me"),
+                        //     Checkbox(
+                        //       value: _selected,
+                        //       onChanged: (value) {
+                        //         setState(() {
+                        //           _selected = value!;
+                        //         });
+                        //       },
+                        //     ),
+                        //   ],
+                        // ),
                         const SizedBox(height: 10),
                         Container(
                           height: 50,
@@ -167,10 +195,11 @@ class _RegisterState extends State<Register> {
                               border: Border.all(color: Colors.white)),
                           child: TextButton(
                             onPressed: () {
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (_) => HomePage()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const NavagationBar()));
                             },
                             child: const Text(
                               'Register',
@@ -185,7 +214,11 @@ class _RegisterState extends State<Register> {
                             TextButton(
                               onPressed: () {
                                 // ignore: todo
-                                // TODO REGISTER SCREEN GOES HERE
+                                // TODO Login SCREEN GOES HERE
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const Login()));
                               },
                               child: const Text(
                                 'Already a Member? Login!',
