@@ -22,13 +22,18 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           title: Column(crossAxisAlignment:CrossAxisAlignment.start,
           children: <Widget>[
-            Text('Broadcast', style: TextStyle(fontWeight: FontWeight.bold),),
-            Text('movie')]
-            ),
-          /* centerTitle: true,
+            Text('Broadcast', style: TextStyle(fontWeight: FontWeight.bold, 
+            color: currentTheme.isDarkTheme()
+                ? Colors.white
+                : Colors.black),),
+            Text('movie', style: TextStyle(color: currentTheme.isDarkTheme()
+                ? Colors.white
+                : Colors.black))
+            ]
+          ),
           leading: currentTheme.isDarkTheme()
-            ? Image.asset("logo_dark.png")
-            : Image.asset("logo_light.png"), */
+            ? Image.asset("assets/images/logo_dark.png")
+            : Image.asset("assets/images/logo_light.png"),
           actions: [
             Switch(
                     value: currentTheme.isDarkTheme(),
@@ -39,8 +44,8 @@ class _HomeState extends State<Home> {
                     })
           ],
           backgroundColor: currentTheme.isDarkTheme()
-              ? const Color(0xff085373)
-              : const Color(0xff711A1A),
+            ? const Color(0XFF262D31)
+            : const Color(0XFFF8F9FA),
         ),
         
         body: Padding(
