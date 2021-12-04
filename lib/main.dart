@@ -1,7 +1,12 @@
 import 'package:broadcast_movie/providers/theme.dart';
+// import 'package:animated_splash/animated_splash.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'ui/pages/home/navegation.dart';
+// import 'ui/pages/splash/splash.dart';
+import 'ui/pages/login/login.dart';
+import 'ui/pages/register/register.dart';
+import 'ui/pages/splash/splash.dart';
 
 void main() => runApp(const MyApp());
 
@@ -34,7 +39,10 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: 'broadcast company',
         home: Scaffold(
-          body: NavagationBar(),
+          body: SplashScreen(),
+          // body: Login(),
+          // body: Register(),
+          // body: NavagationBar(),
         ),
       ),
     );
