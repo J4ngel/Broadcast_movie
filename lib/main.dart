@@ -1,5 +1,6 @@
 import 'package:broadcast_movie/providers/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'ui/pages/home/navegation.dart';
 
@@ -30,7 +31,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider.value(
       value: themeChangeProvider,
-      child: const MaterialApp(
+      child: const GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'broadcast company',
         home: Scaffold(

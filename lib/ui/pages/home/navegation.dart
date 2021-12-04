@@ -2,7 +2,6 @@ import 'package:broadcast_movie/ui/pages/near_me/near_me.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 import '../chat/chat.dart';
-import '../status/mystatus.dart';
 import '../feed/feed.dart';
 
 class NavagationBar extends StatefulWidget {
@@ -16,7 +15,8 @@ class _NavagationBarState extends State<NavagationBar> {
   final List<Widget> _paginas = [
     const Home(),
     const ChatPage(),
-    Near_me_page()
+    Near_me_page(),
+    const FeedPage()
   ];
   @override
   Widget build(BuildContext context) {
@@ -44,11 +44,11 @@ class _NavagationBarState extends State<NavagationBar> {
               backgroundColor: Color(0xff085373)),
           BottomNavigationBarItem(
               icon: Icon(Icons.groups_outlined),
-              label: 'Cerca de mi',
+              label: 'Feed',
               backgroundColor: Color(0xff085373)),
           BottomNavigationBarItem(
               icon: Icon(Icons.local_movies_outlined),
-              label: 'Cerca de mi',
+              label: 'Otros',
               backgroundColor: Color(0xff085373)),
         ],
         selectedItemColor: Colors.white,

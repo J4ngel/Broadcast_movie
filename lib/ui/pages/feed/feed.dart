@@ -1,10 +1,10 @@
 import 'package:broadcast_movie/models/feedUserModel.dart';
 import 'package:broadcast_movie/providers/theme.dart';
+import 'package:broadcast_movie/ui/pages/status/mystatus.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import '../feed/feedcard.dart';
 import '../chat/widgets/feedList.dart';
-
 
 class FeedPage extends StatefulWidget {
   const FeedPage({Key? key}) : super(key: key);
@@ -59,13 +59,26 @@ class _FeedPageState extends State<FeedPage> {
                     Text(
                       "Feed Publications",
                       style: TextStyle(
-                          fontSize: 32,
+                          fontSize: 25,
                           fontWeight: FontWeight.bold,
                           color: currentTheme.isDarkTheme()
                               ? const Color(0xffFFFFFF)
                               : const Color(0xff262D31)),
                     ),
-
+                    RaisedButton(
+                      child: Text(
+                        "Raised Button",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      color: currentTheme.isDarkTheme()
+                          ? const Color(0xff085373)
+                          : const Color(0xff711A1A),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30)),
+                      onPressed: () {
+                        Get.to(() => StatusPage());
+                      },
+                    ),
                     /*Container(
                       padding:
                           EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 2),
@@ -100,8 +113,6 @@ class _FeedPageState extends State<FeedPage> {
                 ),
               ),
             ),
-
-           
             ListView.builder(
               itemCount: feedUsers.length,
               shrinkWrap: true,
@@ -117,13 +128,9 @@ class _FeedPageState extends State<FeedPage> {
                 );
               },
             ),
-
-
           ],
         ),
       ),
-        
-      
     );
   }
 }
