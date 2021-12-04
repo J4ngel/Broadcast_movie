@@ -44,7 +44,7 @@ class _NavagationBarState extends State<NavagationBar> {
               backgroundColor: Color(0xff085373)),
           BottomNavigationBarItem(
               icon: Icon(Icons.groups_outlined),
-              label: 'Feed',
+              label: 'Comunidad',
               backgroundColor: Color(0xff085373)),
           BottomNavigationBarItem(
               icon: Icon(Icons.local_movies_outlined),

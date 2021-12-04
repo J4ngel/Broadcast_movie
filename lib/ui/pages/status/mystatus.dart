@@ -1,6 +1,7 @@
 import 'package:broadcast_movie/models/chatUserModel.dart';
 import 'package:broadcast_movie/providers/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import '../chat/widgets/conversionList.dart';
@@ -69,76 +70,47 @@ class _StatusPageState extends State<StatusPage> {
       backgroundColor: currentTheme.isDarkTheme()
           ? const Color(0XFF262D31)
           : const Color(0XFFF8F9FA),
+      appBar: AppBar(
+        backgroundColor: currentTheme.isDarkTheme()
+            ? const Color(0xff085373)
+            : const Color(0xff711A1A),
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        flexibleSpace: SafeArea(
+          child: Container(
+            padding: EdgeInsets.all(5.0),
+            child: Row(
+              children: <Widget>[
+                IconButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: const Color(0xffFFFFFF),
+                  ),
+                ),
+                SizedBox(
+                  width: 2,
+                ),
+                Text(
+                  'Estados',
+                  style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xffFFFFFF)),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SafeArea(
-              child: Padding(
-                padding: EdgeInsets.only(left: 16, right: 16, top: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      "Status",
-                      style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          color: currentTheme.isDarkTheme()
-                              ? const Color(0xffFFFFFF)
-                              : const Color(0xff262D31)),
-                    ),
-
-                    /*Container(
-                      padding:
-                          EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 2),
-                      height: 30,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: currentTheme.isDarkTheme()
-                            ? const Color(0xff085373)
-                            : const Color(0xff711A1A),
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.add,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                          SizedBox(
-                            width: 2,
-                          ),
-                          Text(
-                            "My state",
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    )*/
-                  ],
-                ),
-              ),
-            ),
-            /*Padding(
-              padding: EdgeInsets.only(top: 16, left: 16, right: 16),
-              child: Text(
-                "Add my status",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: currentTheme.isDarkTheme()
-                        ? const Color(0xffFFFFFF)
-                        : const Color(0xff262D31)),
-              ),
-            ),*/
-            
             Align(
-              //alignment: Alignment.bottomLeft,
               child: Container(
                 padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
                 height: 60,
@@ -199,26 +171,6 @@ class _StatusPageState extends State<StatusPage> {
                 ),
               ),
             ),
-            /*Padding(
-              padding: EdgeInsets.only(top: 16, left: 16, right: 16),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: "Add status",
-                  hintStyle: TextStyle(color: Colors.grey.shade600),
-                  prefixIcon: Icon(
-                    Icons.add,
-                    color: Colors.grey.shade600,
-                    size: 20,
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey.shade100,
-                  contentPadding: EdgeInsets.all(8),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(color: Colors.grey.shade100)),
-                ),
-              ),
-            ),*/
             Padding(
               padding: EdgeInsets.only(top: 16, left: 16, right: 16),
               child: Text(

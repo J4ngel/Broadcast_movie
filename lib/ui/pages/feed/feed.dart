@@ -4,7 +4,7 @@ import 'package:broadcast_movie/ui/pages/status/mystatus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import '../chat/widgets/feedList.dart';
+import 'widgets/feedList.dart';
 
 class FeedPage extends StatefulWidget {
   const FeedPage({Key? key}) : super(key: key);
@@ -57,7 +57,7 @@ class _FeedPageState extends State<FeedPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      "Feed Publications",
+                      "Publicaciones",
                       style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -67,7 +67,7 @@ class _FeedPageState extends State<FeedPage> {
                     ),
                     RaisedButton(
                       child: Text(
-                        "Raised Button",
+                        "Estados",
                         style: TextStyle(color: Colors.white),
                       ),
                       color: currentTheme.isDarkTheme()
@@ -79,36 +79,6 @@ class _FeedPageState extends State<FeedPage> {
                         Get.to(() => StatusPage());
                       },
                     ),
-                    /*Container(
-                      padding:
-                          EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 2),
-                      height: 30,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: currentTheme.isDarkTheme()
-                            ? const Color(0xff085373)
-                            : const Color(0xff711A1A),
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.add,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                          SizedBox(
-                            width: 2,
-                          ),
-                          Text(
-                            "My state",
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    )*/
                   ],
                 ),
               ),

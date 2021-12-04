@@ -1,6 +1,7 @@
 import 'package:broadcast_movie/models/chatMessageModel.dart';
 import 'package:broadcast_movie/providers/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class ChatDetailPage extends StatefulWidget {
@@ -40,7 +41,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
               children: <Widget>[
                 IconButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Get.back();
                   },
                   icon: Icon(
                     Icons.arrow_back,

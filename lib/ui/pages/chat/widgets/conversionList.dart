@@ -1,6 +1,7 @@
 import 'package:broadcast_movie/providers/theme.dart';
 import 'package:broadcast_movie/ui/pages/chat/screens/chatDetailPage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class ConversationList extends StatefulWidget {
@@ -25,9 +26,7 @@ class _ConversationListState extends State<ConversationList> {
     final currentTheme = Provider.of<ThemeProvider>(context);
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return ChatDetailPage();
-        }));
+        Get.to(() => ChatDetailPage());
       },
       // ignore: duplicate_ignore, duplicate_ignore, duplicate_ignore
       child: Container(
