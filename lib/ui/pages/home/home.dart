@@ -40,15 +40,6 @@ class _HomeState extends State<Home> {
           leading: currentTheme.isDarkTheme()
               ? Image.asset("assets/images/logo_dark.png")
               : Image.asset("assets/images/logo_light.png"),
-          actions: [
-            Switch(
-                value: currentTheme.isDarkTheme(),
-                onChanged: (value) {
-                  String newTheme =
-                      value ? ThemePreference.DARK : ThemePreference.LIGHT;
-                  currentTheme.setTheme = newTheme;
-                })
-          ],
           backgroundColor: currentTheme.isDarkTheme()
               ? const Color(0XFF262D31)
               : const Color(0XFFF8F9FA),

@@ -1,5 +1,8 @@
+import 'package:broadcast_movie/providers/theme.dart';
 import 'package:broadcast_movie/ui/pages/near_me/near_me.dart';
+import 'package:broadcast_movie/ui/pages/settings/settings.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'home.dart';
 import '../chat/chat.dart';
 import '../feed/feed.dart';
@@ -16,10 +19,12 @@ class _NavagationBarState extends State<NavagationBar> {
     const Home(),
     const ChatPage(),
     Near_me_page(),
-    const FeedPage()
+    const FeedPage(),
+    const SettingsPage()
   ];
   @override
   Widget build(BuildContext context) {
+    final currentTheme = Provider.of<ThemeProvider>(context);
     return Scaffold(
       body: _paginas[_paginaActual],
       bottomNavigationBar: BottomNavigationBar(
@@ -29,27 +34,37 @@ class _NavagationBarState extends State<NavagationBar> {
           });
         },
         currentIndex: _paginaActual,
-        items: const [
+        items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Principal',
-              backgroundColor: Color(0xff085373)),
+              backgroundColor: currentTheme.isDarkTheme()
+                  ? Color(0xff085373)
+                  : Color(0xff711A1A)),
           BottomNavigationBarItem(
               icon: Icon(Icons.chat),
               label: 'Chat',
-              backgroundColor: Color(0xff085373)),
+              backgroundColor: currentTheme.isDarkTheme()
+                  ? Color(0xff085373)
+                  : Color(0xff711A1A)),
           BottomNavigationBarItem(
               icon: Icon(Icons.location_on),
               label: 'Cerca de mi',
-              backgroundColor: Color(0xff085373)),
+              backgroundColor: currentTheme.isDarkTheme()
+                  ? Color(0xff085373)
+                  : Color(0xff711A1A)),
           BottomNavigationBarItem(
               icon: Icon(Icons.groups_outlined),
               label: 'Comunidad',
-              backgroundColor: Color(0xff085373)),
+              backgroundColor: currentTheme.isDarkTheme()
+                  ? Color(0xff085373)
+                  : Color(0xff711A1A)),
           BottomNavigationBarItem(
-              icon: Icon(Icons.local_movies_outlined),
-              label: 'Otros',
-              backgroundColor: Color(0xff085373)),
+              icon: Icon(Icons.settings),
+              label: 'Configuración',
+              backgroundColor: currentTheme.isDarkTheme()
+                  ? Color(0xff085373)
+                  : Color(0xff711A1A)),
         ],
         selectedItemColor: Colors.white,
       ),

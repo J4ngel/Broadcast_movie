@@ -25,56 +25,49 @@ class _FeedsListState extends State<FeedsList> {
     final currentTheme = Provider.of<ThemeProvider>(context);
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
+        /* Navigator.push(context, MaterialPageRoute(builder: (context) {
           return ChatDetailPage();
-        }));
+        })); */
       },
       // ignore: duplicate_ignore, duplicate_ignore, duplicate_ignore
       child: Container(
         // ignore: prefer_const_constructors
         padding: EdgeInsets.only(left: 16, right: 16, top: 1, bottom: 1),
-        child:
-
-
-
-        Center(
-      child: Card(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            const ListTile(
-              leading: CircleAvatar(
-                    backgroundImage: NetworkImage("https://randomuser.me/api/portraits/men/11.jpg"),
+        child: Center(
+          child: Card(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        "https://randomuser.me/api/portraits/men/11.jpg"),
                     maxRadius: 30,
                   ),
-              title: Text("Lina Jutinico"),
-              subtitle: Text('Ayer fue a ver Encanto con mi hijo y me parecio excelente pelicula, fue my divertido .'),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                TextButton(
-                  child: const Text('Like'),
-                  onPressed: () {/* ... */},
+                  title: Text("Lina Jutinico"),
+                  subtitle: Text(
+                      'Ayer fue a ver Encanto con mi hijo y me parecio excelente pelicula, fue my divertido .'),
                 ),
-                const SizedBox(width: 8),
-                TextButton(
-                  child: const Text('Comment'),
-                  onPressed: () {/* ... */},
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    TextButton(
+                      child: const Text('Like'),
+                      onPressed: () {/* ... */},
+                    ),
+                    const SizedBox(width: 8),
+                    TextButton(
+                      child: const Text('Comment'),
+                      onPressed: () {/* ... */},
+                    ),
+                    const SizedBox(width: 8),
+                  ],
                 ),
-                const SizedBox(width: 8),
               ],
             ),
-          ],
+          ),
         ),
-      ),
-    ),
-        
-        
-        
-        
-        
-        
+
         /* Row(
           children: <Widget>[
             Expanded(
@@ -136,15 +129,7 @@ class _FeedsListState extends State<FeedsList> {
             ),
           ],
         ),*/
-        
       ),
     );
   }
 }
-
-
-
-
-
-
-
