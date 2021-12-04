@@ -1,8 +1,10 @@
+import 'package:broadcast_movie/controllers/near_me_controller.dart';
 import 'package:broadcast_movie/models/Location_user_Model.dart';
 import 'package:broadcast_movie/providers/theme.dart';
 import 'package:broadcast_movie/ui/pages/near_me/widgets/location_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 class Near_me_page extends StatefulWidget {
   Near_me_page({Key? key}) : super(key: key);
@@ -14,23 +16,7 @@ class Near_me_page extends StatefulWidget {
 class _Near_me_pageState extends State<Near_me_page> {
   bool is_visible = false;
   location_users my_info = location_users(name: "Andrés Rivera", address: "Cll 23 No 45-30");
-  List<location_users> List_users = [
-    location_users(
-      name: "Alejandro Angarita",
-      address: "Calle 15 No.4-14"),
-    location_users(
-      name: "Angelica Pardo",
-      address: "Calle 6 No.12-24"),
-    location_users(
-      name: "Juan Guerrero",
-      address: "Carrera 15 No.6-4"),
-    location_users(
-      name: "Daniela Paez",
-      address: "Calle 9 No.1-3"),
-    location_users(
-      name: "Santiago Moreno",
-      address: "Calle 7 No.7-16"),
-  ];
+  data_location_temp List_users = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -76,17 +62,18 @@ class _Near_me_pageState extends State<Near_me_page> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            ListView.builder(
-              itemCount: List_users.length,
-              shrinkWrap: true,
-              padding: EdgeInsets.only(top: 16, left: 40, right: 40),
-              physics: NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return location_list(
-                  name: List_users[index].name,
-                  address: List_users[index].address
-                );
-              },
+            Obx(()=> ListView.builder(
+                itemCount: List_users.data_temp.length,
+                shrinkWrap: true,
+                padding: EdgeInsets.only(top: 16, left: 40, right: 40),
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return location_list(
+                    name: List_users.data_temp[index].name,
+                    address: List_users.data_temp[index].address
+                  );
+                },
+              ),
             ),
 
             Visibility(
