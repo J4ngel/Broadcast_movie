@@ -8,6 +8,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool _selected = true;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -119,10 +121,26 @@ class _LoginState extends State<Login> {
                                   hintText: 'Enter secure password'),
                             )),
                         Padding(
-                          padding: const EdgeInsets.all(1.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Row(
                             children: [
-                              const SizedBox(width: 260),
+                              Text(
+                                  _selected
+                                      ? "Remember me"
+                                      : "Don't remember me",
+                                  style: const TextStyle(color: Colors.white)),
+                              Checkbox(
+                                value: _selected,
+                                activeColor: const Color(0xffCC3333),
+                                side:
+                                    const BorderSide(color: Color(0xffCC3333)),
+                                onChanged: (value) {
+                                  setState(() {
+                                    _selected = value!;
+                                  });
+                                },
+                              ),
+                              const SizedBox(width: 50),
                               TextButton(
                                 onPressed: () {
                                   // ignore: todo
