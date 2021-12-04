@@ -2,6 +2,8 @@ import 'package:broadcast_movie/ui/pages/near_me/near_me.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 import '../chat/chat.dart';
+import '../status/mystatus.dart';
+import '../feed/feed.dart';
 
 class NavagationBar extends StatefulWidget {
   const NavagationBar({Key? key}) : super(key: key);
@@ -11,7 +13,16 @@ class NavagationBar extends StatefulWidget {
 
 class _NavagationBarState extends State<NavagationBar> {
   int _paginaActual = 0;
+<<<<<<< HEAD
   final List<Widget> _paginas = [const Home(), const ChatPage(), Near_me_page()];
+=======
+  final List<Widget> _paginas = [
+    const Home(),
+    const StatusPage(),
+    const FeedPage(),
+    //const ChatPage()
+  ];
+>>>>>>> dev_Lina
   @override
   Widget build(BuildContext context) {
     return Scaffold(
