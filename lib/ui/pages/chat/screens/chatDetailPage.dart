@@ -1,3 +1,4 @@
+import 'package:broadcast_movie/controllers/chatDetailController.dart';
 import 'package:broadcast_movie/models/chatMessageModel.dart';
 import 'package:broadcast_movie/providers/theme.dart';
 import 'package:flutter/material.dart';
@@ -10,16 +11,7 @@ class ChatDetailPage extends StatefulWidget {
 }
 
 class _ChatDetailPageState extends State<ChatDetailPage> {
-  List<ChatMessage> messages = [
-    ChatMessage(messageContent: "Hello, Will", messageType: "receiver"),
-    ChatMessage(messageContent: "How have you been?", messageType: "receiver"),
-    ChatMessage(
-        messageContent: "Hey Kriss, I am doing fine dude. wbu?",
-        messageType: "sender"),
-    ChatMessage(messageContent: "ehhhh, doing OK.", messageType: "receiver"),
-    ChatMessage(
-        messageContent: "Is there any thing wrong?", messageType: "sender"),
-  ];
+  dataChatDetail List_msj = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +86,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
       body: Stack(
         children: <Widget>[
           ListView.builder(
-            itemCount: messages.length,
+            itemCount: List_msj.messages.length,
             shrinkWrap: true,
             padding: EdgeInsets.only(top: 10, bottom: 10),
             physics: NeverScrollableScrollPhysics(),
@@ -103,13 +95,13 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                 padding:
                     EdgeInsets.only(left: 14, right: 14, top: 10, bottom: 10),
                 child: Align(
-                  alignment: (messages[index].messageType == "receiver"
+                  alignment: (List_msj.messages[index].messageType == "receiver"
                       ? Alignment.topLeft
                       : Alignment.topRight),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: (messages[index].messageType == "receiver"
+                      color: (List_msj.messages[index].messageType == "receiver"
                           ? currentTheme.isDarkTheme()
                               ? const Color(0xff131C21)
                               : const Color(0xff990000)
@@ -119,7 +111,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                     ),
                     padding: EdgeInsets.all(16),
                     child: Text(
-                      messages[index].messageContent,
+                      List_msj.messages[index].messageContent,
                       style: TextStyle(fontSize: 15, color: Colors.white),
                     ),
                   ),

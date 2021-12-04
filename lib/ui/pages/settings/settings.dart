@@ -1,6 +1,8 @@
 import 'package:broadcast_movie/models/theme_preferences.dart';
 import 'package:broadcast_movie/providers/theme.dart';
+import 'package:broadcast_movie/ui/pages/splash/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -26,6 +28,7 @@ class _SettingsPageState extends State<SettingsPage> {
             children: [
               Text('Cambiar tema',
                   style: TextStyle(
+                      fontSize: 25.0,
                       color: currentTheme.isDarkTheme()
                           ? Colors.white
                           : Colors.black)),
@@ -37,7 +40,24 @@ class _SettingsPageState extends State<SettingsPage> {
                     currentTheme.setTheme = newTheme;
                   })
             ],
-          )
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          RaisedButton(
+            child: Text(
+              "Iniciar sesión",
+              style: TextStyle(color: Colors.white, fontSize: 25.0),
+            ),
+            color: currentTheme.isDarkTheme()
+                ? const Color(0xff085373)
+                : const Color(0xff711A1A),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+            onPressed: () {
+              Get.to(() => SplashScreen());
+            },
+          ),
         ],
       ),
     );

@@ -1,19 +1,18 @@
 import 'package:broadcast_movie/controllers/near_me_controller.dart';
 import 'package:broadcast_movie/providers/theme.dart';
-// import 'package:animated_splash/animated_splash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'controllers/chatDetailController.dart';
+import 'controllers/chatUserController.dart';
 import 'ui/pages/home/navegation.dart';
-// import 'ui/pages/splash/splash.dart';
-import 'ui/pages/login/login.dart';
-import 'ui/pages/register/register.dart';
-import 'ui/pages/splash/splash.dart';
 
-void main(){
+void main() {
+  Get.put(dataChatUserTemp());
   Get.put(data_location_temp());
+  Get.put(dataChatDetail());
   runApp(const MyApp());
-  }
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -44,10 +43,7 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: 'broadcast company',
         home: Scaffold(
-          body: SplashScreen(),
-          // body: Login(),
-          // body: Register(),
-          // body: NavagationBar(),
+          body: NavagationBar(),
         ),
       ),
     );

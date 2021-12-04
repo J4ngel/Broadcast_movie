@@ -1,6 +1,7 @@
 import 'package:broadcast_movie/ui/pages/login/login.dart';
 import 'package:broadcast_movie/ui/pages/register/register.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -55,8 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
             onPressed: () {
               // ignore: todo
               // TODO: Redirect to register page
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Register()));
+              Get.to(() => Register());
             },
             child: const Text(
               'Register',
