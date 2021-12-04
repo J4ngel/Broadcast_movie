@@ -76,8 +76,7 @@ class _SplashScreenState extends State<SplashScreen> {
             onPressed: () {
               // ignore: todo
               // TODO: Redirect to login page
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Login()));
+              Get.to(() => Login());
             },
             child: const Text(
               'Login',

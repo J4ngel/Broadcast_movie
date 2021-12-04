@@ -2,6 +2,7 @@ import 'package:broadcast_movie/ui/pages/home/navegation.dart';
 import 'package:broadcast_movie/ui/pages/login/login.dart';
 import 'package:broadcast_movie/ui/pages/splash/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -70,11 +71,7 @@ class _RegisterState extends State<Register> {
                                 onPressed: () {
                                   // ignore: todo
                                   // TODO: Return to initial page
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const SplashScreen()));
+                                  Get.to(() => SplashScreen());
                                 },
                                 iconSize: 30.0,
                                 color: Colors.white,
@@ -195,11 +192,7 @@ class _RegisterState extends State<Register> {
                               border: Border.all(color: Colors.white)),
                           child: TextButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const NavagationBar()));
+                              Get.to(() => NavagationBar());
                             },
                             child: const Text(
                               'Register',
@@ -215,10 +208,7 @@ class _RegisterState extends State<Register> {
                               onPressed: () {
                                 // ignore: todo
                                 // TODO Login SCREEN GOES HERE
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const Login()));
+                                Get.to(() => Login());
                               },
                               child: const Text(
                                 'Already a Member? Login!',
