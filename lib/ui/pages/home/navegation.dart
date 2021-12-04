@@ -13,16 +13,11 @@ class NavagationBar extends StatefulWidget {
 
 class _NavagationBarState extends State<NavagationBar> {
   int _paginaActual = 0;
-<<<<<<< HEAD
-  final List<Widget> _paginas = [const Home(), const ChatPage(), Near_me_page()];
-=======
   final List<Widget> _paginas = [
     const Home(),
-    const StatusPage(),
-    const FeedPage(),
-    //const ChatPage()
+    const ChatPage(),
+    Near_me_page()
   ];
->>>>>>> dev_Lina
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,29 +31,25 @@ class _NavagationBarState extends State<NavagationBar> {
         currentIndex: _paginaActual,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home), 
-            label: 'Principal', 
-            backgroundColor: Color(0xff085373)),
-            
+              icon: Icon(Icons.home),
+              label: 'Principal',
+              backgroundColor: Color(0xff085373)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat), 
-            label: 'Chat',
-            backgroundColor: Color(0xff085373)),
-
+              icon: Icon(Icons.chat),
+              label: 'Chat',
+              backgroundColor: Color(0xff085373)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.location_on),
-            label: 'Cerca de mi',
-            backgroundColor: Color(0xff085373)),
-
+              icon: Icon(Icons.location_on),
+              label: 'Cerca de mi',
+              backgroundColor: Color(0xff085373)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.groups_outlined),
-            label: 'Cerca de mi',
-            backgroundColor: Color(0xff085373)),
-
+              icon: Icon(Icons.groups_outlined),
+              label: 'Cerca de mi',
+              backgroundColor: Color(0xff085373)),
           BottomNavigationBarItem(
-            icon: Icon(Icons.local_movies_outlined),
-            label: 'Cerca de mi',
-            backgroundColor: Color(0xff085373)),
+              icon: Icon(Icons.local_movies_outlined),
+              label: 'Cerca de mi',
+              backgroundColor: Color(0xff085373)),
         ],
         selectedItemColor: Colors.white,
       ),
