@@ -1,5 +1,6 @@
 import 'package:broadcast_movie/controllers/near_me_controller.dart';
 import 'package:broadcast_movie/providers/theme.dart';
+import 'package:broadcast_movie/ui/pages/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +44,7 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: 'broadcast company',
         home: Scaffold(
-          body: NavagationBar(),
+          body: SplashScreen(),
         ),
       ),
     );

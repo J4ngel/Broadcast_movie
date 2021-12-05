@@ -1,3 +1,4 @@
+import 'package:broadcast_movie/ui/pages/forgot_password/forgot_password.dart';
 import 'package:broadcast_movie/ui/pages/home/navegation.dart';
 import 'package:broadcast_movie/ui/pages/register/register.dart';
 import 'package:broadcast_movie/providers/theme.dart';
@@ -140,6 +141,7 @@ class _LoginState extends State<Login> {
                                 onPressed: () {
                                   // ignore: todo
                                   // TODO FORGOT PASSWORD SCREEN GOES HERE
+                                  Get.to(() => const ForgotPassword());
                                 },
                                 child: const Text(
                                   'Forgot Password?',
