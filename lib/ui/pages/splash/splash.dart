@@ -1,7 +1,6 @@
 import 'package:broadcast_movie/ui/pages/login/login.dart';
 import 'package:broadcast_movie/providers/theme.dart';
 import 'package:provider/provider.dart';
-
 import 'package:broadcast_movie/ui/pages/register/register.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -35,15 +34,6 @@ class _SplashScreenState extends State<SplashScreen> {
                         : Image.asset("assets/images/logo_light.png",
                             fit: BoxFit.fill))),
             const SizedBox(height: 30),
-            // const Text(
-            //   'Welcome!',
-            //   style: TextStyle(
-            //     fontSize: 30.0,
-            //     color: currentTheme.isDarkTheme()
-            //         ? Color(0xff085373)
-            //         : Color(0xff711A1A),
-            //   ),
-            // ),
             const SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -86,45 +76,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Get.to(() => const Register());
               },
             ),
-            // Container(
-            //   height: 50,
-            //   width: 250,
-            //   decoration: BoxDecoration(
-            //       color: const Color(0xff711A1A),
-            //       borderRadius: BorderRadius.circular(10),
-            //       border: Border.all(color: Colors.white)),
-            //   child: TextButton(
-            //     onPressed: () {
-            //       // ignore: todo
-            //       // TODO: Redirect to register page
-            //       Get.to(() => const Register());
-            //     },
-            //     child: const Text(
-            //       'Register',
-            //       style: TextStyle(color: Colors.white, fontSize: 20),
-            //     ),
-            //   ),
-            // ),
             const SizedBox(height: 20),
-            // Container(
-            //   height: 50,
-            //   width: 250,
-            //   decoration: BoxDecoration(
-            //       // color: Colors.white,
-            //       borderRadius: BorderRadius.circular(10),
-            //       border: Border.all(color: const Color(0xff711A1A))),
-            //   child: TextButton(
-            //     onPressed: () {
-            //       // ignore: todo
-            //       // TODO: Redirect to login page
-            //       Get.to(() => const Login());
-            //     },
-            //     child: const Text(
-            //       'Login',
-            //       style: TextStyle(color: Color(0xff711A1A), fontSize: 20),
-            //     ),
-            //   ),
-            // ),
             ElevatedButton(
               child: const Text(
                 "Login",

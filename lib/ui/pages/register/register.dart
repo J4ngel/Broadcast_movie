@@ -1,6 +1,8 @@
 import 'package:broadcast_movie/ui/pages/home/navegation.dart';
 import 'package:broadcast_movie/ui/pages/login/login.dart';
 import 'package:broadcast_movie/ui/pages/splash/splash.dart';
+import 'package:broadcast_movie/providers/theme.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,42 +17,39 @@ class _RegisterState extends State<Register> {
   // bool _selected = true;
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: const Color(0xffA3A3AD),
-        // decoration: BoxDecoration(
-        //     image: DecorationImage(
-        //         image: AssetImage('assets/logo_light.png'),
-        //         fit: BoxFit.cover)),
-        child: Scaffold(
-            // backgroundColor: Color.transparent,
-            body: SingleChildScrollView(
+    final currentTheme = Provider.of<ThemeProvider>(context);
+    return Scaffold(
+        backgroundColor: currentTheme.isDarkTheme()
+            ? const Color(0XFF262D31)
+            : const Color(0XFFF8F9FA),
+        body: SingleChildScrollView(
           child: Column(children: [
             const SizedBox(height: 20),
             SizedBox(
-                // child: Image.asset('assets/logo_light.png'),
                 height: 264.0,
                 width: 274.0,
                 child: DecoratedBox(
                     decoration: const BoxDecoration(),
-                    child: Image.asset('assets/images/logo_light.png',
-                        fit: BoxFit.fill))),
-            // Row(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [Image.asset('assets/logo_light.png')]),
+                    child: currentTheme.isDarkTheme()
+                        ? Image.asset('assets/images/logo_dark.png',
+                            fit: BoxFit.fill)
+                        : Image.asset("assets/images/logo_light.png",
+                            fit: BoxFit.fill))),
             const SizedBox(height: 20),
             Container(
-                // color: Color(0xff711A1A),
                 decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
-                    color: const Color(0xff711A1A),
+                    color: currentTheme.isDarkTheme()
+                        ? const Color(0xff085373)
+                        : const Color(0xff711A1A),
                     borderRadius: BorderRadius.circular(20)),
                 padding: const EdgeInsets.all(10.0),
                 margin: const EdgeInsets.all(10.0),
                 alignment: Alignment.center,
                 // transform: Matrix4.rotationZ(0.05),
                 child: SizedBox(
-                  child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                      // crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(10.0),
@@ -60,9 +59,7 @@ class _RegisterState extends State<Register> {
                                 'Register',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                    // fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                    fontSize: 30.0),
+                                    color: Colors.white, fontSize: 30.0),
                               ),
                               const SizedBox(width: 180),
                               IconButton(
@@ -71,17 +68,11 @@ class _RegisterState extends State<Register> {
                                 onPressed: () {
                                   // ignore: todo
                                   // TODO: Return to initial page
-                                  Get.to(() => SplashScreen());
+                                  Get.to(() => const SplashScreen());
                                 },
                                 iconSize: 30.0,
                                 color: Colors.white,
                               ),
-
-                              // Icon(
-                              //   Icons.highlight_off_outlined,
-                              //   color: Colors.white,
-                              //   size: 30.0,
-                              // ),
                             ],
                           ),
                         ),
@@ -93,7 +84,6 @@ class _RegisterState extends State<Register> {
                               style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                   fillColor: Colors.white,
-                                  // filled: true,
                                   focusedBorder: OutlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Colors.white)),
@@ -114,7 +104,6 @@ class _RegisterState extends State<Register> {
                               style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                   fillColor: Colors.white,
-                                  // filled: true,
                                   focusedBorder: OutlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Colors.white)),
@@ -127,14 +116,12 @@ class _RegisterState extends State<Register> {
                             )),
                         const Padding(
                             padding: EdgeInsets.all(10.0),
-                            // ignore: prefer_const_constructors
                             child: TextField(
                               obscureText: true,
                               cursorColor: Color(0xffCC3333),
                               style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                   fillColor: Colors.white,
-                                  // filled: true,
                                   focusedBorder: OutlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Colors.white)),
@@ -145,61 +132,26 @@ class _RegisterState extends State<Register> {
                                   labelStyle: TextStyle(color: Colors.white),
                                   hintText: 'Enter secure password'),
                             )),
-                        Padding(
-                          padding: const EdgeInsets.all(1.0),
-                          child: Row(
-                            children: [
-                              const SizedBox(width: 260),
-                              TextButton(
-                                onPressed: () {
-                                  // ignore: todo
-                                  // TODO FORGOT PASSWORD SCREEN GOES HERE
-                                },
-                                child: const Text(
-                                  'Forgot Password?',
-                                  style: TextStyle(
-                                      // colork: Color(0xffCC3333),
-                                      color: Colors.white,
-                                      fontSize: 10),
-                                ),
+                        const SizedBox(height: 50),
+                        ElevatedButton(
+                          child: const Text(
+                            "Register",
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 20.0),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                              primary: currentTheme.isDarkTheme()
+                                  ? const Color(0xff085373)
+                                  : const Color(0xff711A1A),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                            ],
-                          ),
-                        ),
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: <Widget>[
-                        //     Text(_selected
-                        //         ? "Remember me"
-                        //         : "Don't remember me"),
-                        //     Checkbox(
-                        //       value: _selected,
-                        //       onChanged: (value) {
-                        //         setState(() {
-                        //           _selected = value!;
-                        //         });
-                        //       },
-                        //     ),
-                        //   ],
-                        // ),
-                        const SizedBox(height: 10),
-                        Container(
-                          height: 50,
-                          width: 250,
-                          decoration: BoxDecoration(
-                              color: const Color(0xff711A1A),
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: Colors.white)),
-                          child: TextButton(
-                            onPressed: () {
-                              Get.to(() => NavagationBar());
-                            },
-                            child: const Text(
-                              'Register',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
-                            ),
-                          ),
+                              side: const BorderSide(color: Colors.white),
+                              padding: const EdgeInsets.all(10),
+                              fixedSize: const Size(250.0, 50.0)),
+                          onPressed: () {
+                            Get.to(() => const NavagationBar());
+                          },
                         ),
                         const SizedBox(height: 10),
                         Row(
@@ -208,7 +160,7 @@ class _RegisterState extends State<Register> {
                               onPressed: () {
                                 // ignore: todo
                                 // TODO Login SCREEN GOES HERE
-                                Get.to(() => Login());
+                                Get.to(() => const Login());
                               },
                               child: const Text(
                                 'Already a Member? Login!',
@@ -222,7 +174,7 @@ class _RegisterState extends State<Register> {
                       ]),
                 ))
           ]),
-        )));
+        ));
     ;
   }
 }
