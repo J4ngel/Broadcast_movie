@@ -1,6 +1,7 @@
 import 'package:broadcast_movie/ui/pages/home/navegation.dart';
 import 'package:broadcast_movie/ui/pages/register/register.dart';
-import 'package:broadcast_movie/ui/pages/splash/splash.dart';
+import 'package:broadcast_movie/providers/theme.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,34 +17,30 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: const Color(0xffA3A3AD),
-        // decoration: BoxDecoration(
-        //     image: DecorationImage(
-        //         image: AssetImage('assets/logo_light.png'),
-        //         fit: BoxFit.cover)),
-        child: Scaffold(
-            // backgroundColor: Color.transparent,
-            body: SingleChildScrollView(
+    final currentTheme = Provider.of<ThemeProvider>(context);
+
+    return Scaffold(
+        backgroundColor: currentTheme.isDarkTheme()
+            ? const Color(0XFF262D31)
+            : const Color(0XFFF8F9FA),
+        body: SingleChildScrollView(
           child: Column(children: [
             const SizedBox(height: 30),
             SizedBox(
-                // child: Image.asset('assets/logo_light.png'),
                 height: 264.0,
                 width: 274.0,
-                child: DecoratedBox(
-                    decoration: const BoxDecoration(),
-                    child: Image.asset('assets/images/logo_light.png',
-                        fit: BoxFit.fill))),
-            // Row(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [Image.asset('assets/logo_light.png')]),
+                child: currentTheme.isDarkTheme()
+                    ? Image.asset('assets/images/logo_dark.png',
+                        fit: BoxFit.fill)
+                    : Image.asset("assets/images/logo_light.png",
+                        fit: BoxFit.fill)),
             const SizedBox(height: 30),
             Container(
-                // color: Color(0xff711A1A),
                 decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
-                    color: const Color(0xff711A1A),
+                    color: currentTheme.isDarkTheme()
+                        ? const Color(0xff085373)
+                        : const Color(0xff711A1A),
                     borderRadius: BorderRadius.circular(20)),
                 padding: const EdgeInsets.all(10.0),
                 margin: const EdgeInsets.all(10.0),
@@ -77,12 +74,6 @@ class _LoginState extends State<Login> {
                                 iconSize: 30.0,
                                 color: Colors.white,
                               ),
-
-                              // Icon(
-                              //   Icons.highlight_off_outlined,
-                              //   color: Colors.white,
-                              //   size: 30.0,
-                              // ),
                             ],
                           ),
                         ),
@@ -94,7 +85,6 @@ class _LoginState extends State<Login> {
                               style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                   fillColor: Colors.white,
-                                  // filled: true,
                                   focusedBorder: OutlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Colors.white)),
@@ -107,14 +97,12 @@ class _LoginState extends State<Login> {
                             )),
                         const Padding(
                             padding: EdgeInsets.all(10.0),
-                            // ignore: prefer_const_constructors
                             child: TextField(
                               obscureText: true,
                               cursorColor: Color(0xffCC3333),
                               style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                   fillColor: Colors.white,
-                                  // filled: true,
                                   focusedBorder: OutlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Colors.white)),
@@ -136,9 +124,11 @@ class _LoginState extends State<Login> {
                                   style: const TextStyle(color: Colors.white)),
                               Checkbox(
                                 value: _selected,
-                                activeColor: const Color(0xffCC3333),
-                                side:
-                                    const BorderSide(color: Color(0xffCC3333)),
+                                activeColor: currentTheme.isDarkTheme()
+                                    ? const Color(0xff085373)
+                                    : const Color(0xff711A1A),
+                                // activeColor: const Color(0xffCC3333),
+                                side: const BorderSide(color: Colors.white),
                                 onChanged: (value) {
                                   setState(() {
                                     _selected = value!;
@@ -154,32 +144,32 @@ class _LoginState extends State<Login> {
                                 child: const Text(
                                   'Forgot Password?',
                                   style: TextStyle(
-                                      // colork: Color(0xffCC3333),
-                                      color: Colors.white,
-                                      fontSize: 10),
+                                      color: Colors.white, fontSize: 10),
                                 ),
                               ),
                             ],
                           ),
                         ),
                         const SizedBox(height: 10),
-                        Container(
-                          height: 50,
-                          width: 250,
-                          decoration: BoxDecoration(
-                              color: const Color(0xff711A1A),
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: Colors.white)),
-                          child: TextButton(
-                            onPressed: () {
-                              Get.to(() => NavagationBar());
-                            },
-                            child: const Text(
-                              'Login',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
-                            ),
+                        ElevatedButton(
+                          child: const Text(
+                            "Login",
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 20.0),
                           ),
+                          style: ElevatedButton.styleFrom(
+                              primary: currentTheme.isDarkTheme()
+                                  ? const Color(0xff085373)
+                                  : const Color(0xff711A1A),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              side: const BorderSide(color: Colors.white),
+                              padding: const EdgeInsets.all(10),
+                              fixedSize: const Size(250.0, 50.0)),
+                          onPressed: () {
+                            Get.to(() => const NavagationBar());
+                          },
                         ),
                         const SizedBox(height: 10),
                         Row(
@@ -188,7 +178,7 @@ class _LoginState extends State<Login> {
                               onPressed: () {
                                 // ignore: todo
                                 // TODO REGISTER SCREEN GOES HERE
-                                Get.to(() => Register());
+                                Get.to(() => const Register());
                               },
                               child: const Text(
                                 'New Here? Register!',
@@ -202,6 +192,6 @@ class _LoginState extends State<Login> {
                       ]),
                 ))
           ]),
-        )));
+        ));
   }
 }
