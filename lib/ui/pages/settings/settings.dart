@@ -28,7 +28,7 @@ class _SettingsPageState extends State<SettingsPage> {
             children: [
               Text('Cambiar tema',
                   style: TextStyle(
-                      fontSize: 25.0,
+                      fontSize: 20.0,
                       color: currentTheme.isDarkTheme()
                           ? Colors.white
                           : Colors.black)),
@@ -41,21 +41,24 @@ class _SettingsPageState extends State<SettingsPage> {
                   })
             ],
           ),
-          SizedBox(
-            height: 10.0,
+          const SizedBox(
+            height: 50.0,
           ),
-          RaisedButton(
-            child: Text(
+          ElevatedButton(
+            child: const Text(
               "Iniciar sesión",
-              style: TextStyle(color: Colors.white, fontSize: 25.0),
+              style: TextStyle(color: Colors.white, fontSize: 20.0),
             ),
-            color: currentTheme.isDarkTheme()
-                ? const Color(0xff085373)
-                : const Color(0xff711A1A),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+            style: ElevatedButton.styleFrom(
+                primary: currentTheme.isDarkTheme()
+                    ? const Color(0xff085373)
+                    : const Color(0xff711A1A),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                padding: const EdgeInsets.all(10),
+                fixedSize: const Size(250.0, 50.0)),
             onPressed: () {
-              Get.to(() => SplashScreen());
+              Get.to(() => const SplashScreen());
             },
           ),
         ],
