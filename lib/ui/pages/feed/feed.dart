@@ -1,9 +1,8 @@
+import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:broadcast_movie/models/feedUserModel.dart';
-import 'package:broadcast_movie/providers/theme.dart';
 import 'package:broadcast_movie/ui/pages/status/mystatus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
 import 'widgets/feedList.dart';
 
 class FeedPage extends StatefulWidget {
@@ -39,10 +38,10 @@ class _FeedPageState extends State<FeedPage> {
 
   @override
   Widget build(BuildContext context) {
-    final currentTheme = Provider.of<ThemeProvider>(context);
+    final ThemeController controller = Get.find();
 
     return Scaffold(
-      backgroundColor: currentTheme.isDarkTheme()
+      backgroundColor: controller.darkMode
           ? const Color(0XFF262D31)
           : const Color(0XFFF8F9FA),
       body: SingleChildScrollView(
@@ -61,7 +60,7 @@ class _FeedPageState extends State<FeedPage> {
                       style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
-                          color: currentTheme.isDarkTheme()
+                          color: controller.darkMode
                               ? const Color(0xffFFFFFF)
                               : const Color(0xff262D31)),
                     ),
@@ -70,7 +69,7 @@ class _FeedPageState extends State<FeedPage> {
                         "Estados",
                         style: TextStyle(color: Colors.white),
                       ),
-                      color: currentTheme.isDarkTheme()
+                      color: controller.darkMode
                           ? const Color(0xff085373)
                           : const Color(0xff711A1A),
                       shape: RoundedRectangleBorder(

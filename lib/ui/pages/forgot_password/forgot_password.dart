@@ -1,6 +1,5 @@
+import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:broadcast_movie/ui/pages/login/login.dart';
-import 'package:broadcast_movie/providers/theme.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,9 +13,9 @@ class ForgotPassword extends StatefulWidget {
 class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
-    final currentTheme = Provider.of<ThemeProvider>(context);
+    final ThemeController controller = Get.find();
     return Scaffold(
-        backgroundColor: currentTheme.isDarkTheme()
+        backgroundColor: controller.darkMode
             ? const Color(0XFF262D31)
             : const Color(0XFFF8F9FA),
         body: SingleChildScrollView(
@@ -26,7 +25,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               Icon(
                 Icons.lock_outlined,
                 size: 200,
-                color: currentTheme.isDarkTheme()
+                color: controller.darkMode
                     ? Colors.white
                     : const Color(0xff711A1A),
               ),
@@ -34,7 +33,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               Text(
                 'Forgot your password?',
                 style: TextStyle(
-                    color: currentTheme.isDarkTheme()
+                    color: controller.darkMode
                         ? Colors.white
                         : const Color(0xff711A1A),
                     fontSize: 20.0,
@@ -45,7 +44,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 'Enter your email below to reset your password',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: currentTheme.isDarkTheme()
+                    color: controller.darkMode
                         ? Colors.white
                         : const Color(0xff711A1A),
                     fontSize: 15.0),
@@ -54,11 +53,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
-                  cursorColor: currentTheme.isDarkTheme()
+                  cursorColor: controller.darkMode
                       ? Colors.white
                       : const Color(0xff711A1A),
                   style: TextStyle(
-                    color: currentTheme.isDarkTheme()
+                    color: controller.darkMode
                         ? Colors.white
                         : const Color(0xff711A1A),
                   ),
@@ -66,19 +65,19 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       fillColor: Colors.white,
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                        color: currentTheme.isDarkTheme()
+                        color: controller.darkMode
                             ? Colors.white
                             : const Color(0xff711A1A),
                       )),
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                        color: currentTheme.isDarkTheme()
+                        color: controller.darkMode
                             ? Colors.white
                             : const Color(0xff711A1A),
                       )),
                       labelText: 'Email',
                       labelStyle: TextStyle(
-                        color: currentTheme.isDarkTheme()
+                        color: controller.darkMode
                             ? Colors.white
                             : const Color(0xff711A1A),
                       ),
@@ -92,7 +91,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   style: TextStyle(color: Colors.white, fontSize: 20.0),
                 ),
                 style: ElevatedButton.styleFrom(
-                    primary: currentTheme.isDarkTheme()
+                    primary: controller.darkMode
                         ? const Color(0xff085373)
                         : const Color(0xff711A1A),
                     shape: RoundedRectangleBorder(
@@ -113,7 +112,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 child: Text(
                   'Cancel',
                   style: TextStyle(
-                      color: currentTheme.isDarkTheme()
+                      color: controller.darkMode
                           ? const Color(0xff085373)
                           : const Color(0xff711A1A),
                       fontSize: 15),

@@ -1,8 +1,7 @@
-import 'package:broadcast_movie/models/theme_preferences.dart';
-import 'package:broadcast_movie/providers/theme.dart';
+import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:broadcast_movie/ui/pages/home/widgets/card_movie.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -14,9 +13,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    final currentTheme = Provider.of<ThemeProvider>(context);
+    final ThemeController controller = Get.find();
     return Scaffold(
-        backgroundColor: currentTheme.isDarkTheme()
+        backgroundColor: controller.darkMode
             ? const Color(0XFF262D31)
             : const Color(0XFFF8F9FA),
         appBar: AppBar(
@@ -27,20 +26,17 @@ class _HomeState extends State<Home> {
                   'Broadcast',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: currentTheme.isDarkTheme()
-                          ? Colors.white
-                          : Colors.black),
+                      color: controller.darkMode ? Colors.white : Colors.black),
                 ),
                 Text('movie',
                     style: TextStyle(
-                        color: currentTheme.isDarkTheme()
-                            ? Colors.white
-                            : Colors.black))
+                        color:
+                            controller.darkMode ? Colors.white : Colors.black))
               ]),
-          leading: currentTheme.isDarkTheme()
+          leading: controller.darkMode
               ? Image.asset("assets/images/logo_dark.png")
               : Image.asset("assets/images/logo_light.png"),
-          backgroundColor: currentTheme.isDarkTheme()
+          backgroundColor: controller.darkMode
               ? const Color(0XFF262D31)
               : const Color(0XFFF8F9FA),
         ),
@@ -62,7 +58,7 @@ class _HomeState extends State<Home> {
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                         borderSide: BorderSide(
-                            color: currentTheme.isDarkTheme()
+                            color: controller.darkMode
                                 ? Colors.grey.shade100
                                 : Color(0xff711A1A)))),
               ),

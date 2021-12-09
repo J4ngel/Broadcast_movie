@@ -1,9 +1,8 @@
 import 'package:broadcast_movie/controllers/chatDetailController.dart';
+import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:broadcast_movie/models/chatMessageModel.dart';
-import 'package:broadcast_movie/providers/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
 
 class ChatDetailPage extends StatefulWidget {
   @override
@@ -15,13 +14,13 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    final currentTheme = Provider.of<ThemeProvider>(context);
+    final ThemeController controller = Get.find();
     return Scaffold(
-      backgroundColor: currentTheme.isDarkTheme()
+      backgroundColor: controller.darkMode
           ? const Color(0XFF262D31)
           : const Color(0XFFF8F9FA),
       appBar: AppBar(
-        backgroundColor: currentTheme.isDarkTheme()
+        backgroundColor: controller.darkMode
             ? const Color(0xff085373)
             : const Color(0xff711A1A),
         elevation: 0,
@@ -102,10 +101,10 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: (List_msj.messages[index].messageType == "receiver"
-                          ? currentTheme.isDarkTheme()
+                          ? controller.darkMode
                               ? const Color(0xff131C21)
                               : const Color(0xff990000)
-                          : currentTheme.isDarkTheme()
+                          : controller.darkMode
                               ? const Color(0xff085373)
                               : const Color(0xff711A1A)),
                     ),
@@ -125,7 +124,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
               padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
               height: 60,
               width: double.infinity,
-              color: currentTheme.isDarkTheme()
+              color: controller.darkMode
                   ? const Color(0xff131C21)
                   : const Color(0xffEDEDED),
               child: Row(
@@ -136,7 +135,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                       height: 30,
                       width: 30,
                       decoration: BoxDecoration(
-                        color: currentTheme.isDarkTheme()
+                        color: controller.darkMode
                             ? const Color(0xff085373)
                             : const Color(0xff711A1A),
                         borderRadius: BorderRadius.circular(30),
@@ -156,7 +155,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                       decoration: InputDecoration(
                           hintText: "Write message...",
                           hintStyle: TextStyle(
-                              color: currentTheme.isDarkTheme()
+                              color: controller.darkMode
                                   ? const Color(0xffFFFFFF)
                                   : const Color(0xff262D31)),
                           border: InputBorder.none),
@@ -172,7 +171,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                       color: Colors.white,
                       size: 18,
                     ),
-                    backgroundColor: currentTheme.isDarkTheme()
+                    backgroundColor: controller.darkMode
                         ? const Color(0xff085373)
                         : const Color(0xff711A1A),
                     elevation: 0,

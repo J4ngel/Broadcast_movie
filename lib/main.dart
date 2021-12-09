@@ -1,12 +1,11 @@
 import 'package:broadcast_movie/controllers/near_me_controller.dart';
-import 'package:broadcast_movie/providers/theme.dart';
 import 'package:broadcast_movie/ui/pages/splash/splash.dart';
+import 'package:broadcast_movie/ui/theme/theme_management.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
 import 'controllers/chatDetailController.dart';
 import 'controllers/chatUserController.dart';
-import 'ui/pages/home/navegation.dart';
+import 'controllers/theme_controller.dart';
 
 void main() {
   Get.put(dataChatUserTemp());
@@ -23,29 +22,32 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  ThemeProvider themeChangeProvider = ThemeProvider();
+  late final ThemeController controller = Get.put(ThemeController());
+  // Theme management
+  late final ThemeManager manager = ThemeManager();
+  bool isLoaded = false;
+
+  Future<void> initializeTheme() async {
+    controller.darkMode = await manager.storedTheme;
+    setState(() => isLoaded = true);
+  }
 
   @override
   void initState() {
+    ever(controller.reactiveDarkMode, (bool isDarkMode) {
+      manager.changeTheme(isDarkMode: isDarkMode);
+    });
+    initializeTheme();
     super.initState();
-    getCurrentAppTheme();
-  }
-
-  void getCurrentAppTheme() async {
-    themeChangeProvider.setTheme =
-        await themeChangeProvider.themePreference.getTheme();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
-      value: themeChangeProvider,
-      child: const GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'broadcast company',
-        home: Scaffold(
-          body: SplashScreen(),
-        ),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'broadcast company',
+      home: Scaffold(
+        body: SplashScreen(),
       ),
     );
   }

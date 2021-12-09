@@ -1,7 +1,7 @@
-import 'package:broadcast_movie/providers/theme.dart';
+import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:broadcast_movie/ui/pages/chat/screens/chatDetailPage.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 class FeedsList extends StatefulWidget {
   String name;
@@ -22,7 +22,7 @@ class FeedsList extends StatefulWidget {
 class _FeedsListState extends State<FeedsList> {
   @override
   Widget build(BuildContext context) {
-    final currentTheme = Provider.of<ThemeProvider>(context);
+    final ThemeController controller = Get.find();
     return GestureDetector(
       onTap: () {
         /* Navigator.push(context, MaterialPageRoute(builder: (context) {

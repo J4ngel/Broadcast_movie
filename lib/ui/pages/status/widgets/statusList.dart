@@ -1,7 +1,7 @@
-import 'package:broadcast_movie/providers/theme.dart';
+import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:broadcast_movie/ui/pages/chat/screens/chatDetailPage.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 class StatusList extends StatefulWidget {
   String name;
@@ -22,7 +22,8 @@ class StatusList extends StatefulWidget {
 class _StatusListState extends State<StatusList> {
   @override
   Widget build(BuildContext context) {
-    final currentTheme = Provider.of<ThemeProvider>(context);
+    final ThemeController controller = Get.find();
+
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -56,7 +57,7 @@ class _StatusListState extends State<StatusList> {
                             widget.name,
                             style: TextStyle(
                                 fontSize: 16,
-                                color: currentTheme.isDarkTheme()
+                                color: controller.darkMode
                                     ? const Color(0xffFFFFFF)
                                     : const Color(0xff262D31)),
                           ),
@@ -67,7 +68,7 @@ class _StatusListState extends State<StatusList> {
                             widget.messageText,
                             style: TextStyle(
                                 fontSize: 13,
-                                color: currentTheme.isDarkTheme()
+                                color: controller.darkMode
                                     ? const Color(0xffFFFFFF)
                                     : const Color(0xff262D31),
                                 fontWeight: widget.isMessageRead
@@ -88,7 +89,7 @@ class _StatusListState extends State<StatusList> {
                   fontWeight: widget.isMessageRead
                       ? FontWeight.bold
                       : FontWeight.normal,
-                  color: currentTheme.isDarkTheme()
+                  color: controller.darkMode
                       ? const Color(0xffFFFFFF)
                       : const Color(0xff262D31)),
             ),

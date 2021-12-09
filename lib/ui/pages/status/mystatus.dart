@@ -1,8 +1,7 @@
+import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:broadcast_movie/models/chatUserModel.dart';
-import 'package:broadcast_movie/providers/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
 
 import '../chat/widgets/conversionList.dart';
 
@@ -64,14 +63,14 @@ class _StatusPageState extends State<StatusPage> {
 
   @override
   Widget build(BuildContext context) {
-    final currentTheme = Provider.of<ThemeProvider>(context);
+    final ThemeController controller = Get.find();
 
     return Scaffold(
-      backgroundColor: currentTheme.isDarkTheme()
+      backgroundColor: controller.darkMode
           ? const Color(0XFF262D31)
           : const Color(0XFFF8F9FA),
       appBar: AppBar(
-        backgroundColor: currentTheme.isDarkTheme()
+        backgroundColor: controller.darkMode
             ? const Color(0xff085373)
             : const Color(0xff711A1A),
         elevation: 0,
@@ -115,7 +114,7 @@ class _StatusPageState extends State<StatusPage> {
                 padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
                 height: 60,
                 width: double.infinity,
-                color: currentTheme.isDarkTheme()
+                color: controller.darkMode
                     ? const Color(0xff131C21)
                     : const Color(0xffEDEDED),
                 child: Row(
@@ -126,7 +125,7 @@ class _StatusPageState extends State<StatusPage> {
                         height: 30,
                         width: 30,
                         decoration: BoxDecoration(
-                          color: currentTheme.isDarkTheme()
+                          color: controller.darkMode
                               ? const Color(0xff085373)
                               : const Color(0xff711A1A),
                           borderRadius: BorderRadius.circular(30),
@@ -146,7 +145,7 @@ class _StatusPageState extends State<StatusPage> {
                         decoration: InputDecoration(
                             hintText: "Change my status...",
                             hintStyle: TextStyle(
-                                color: currentTheme.isDarkTheme()
+                                color: controller.darkMode
                                     ? const Color(0xffFFFFFF)
                                     : const Color(0xff262D31)),
                             border: InputBorder.none),
@@ -162,7 +161,7 @@ class _StatusPageState extends State<StatusPage> {
                         color: Colors.white,
                         size: 18,
                       ),
-                      backgroundColor: currentTheme.isDarkTheme()
+                      backgroundColor: controller.darkMode
                           ? const Color(0xff085373)
                           : const Color(0xff711A1A),
                       elevation: 0,
@@ -177,7 +176,7 @@ class _StatusPageState extends State<StatusPage> {
                 "Recientes",
                 style: TextStyle(
                     fontSize: 15,
-                    color: currentTheme.isDarkTheme()
+                    color: controller.darkMode
                         ? const Color(0xffFFFFFF)
                         : const Color(0xff262D31)),
               ),

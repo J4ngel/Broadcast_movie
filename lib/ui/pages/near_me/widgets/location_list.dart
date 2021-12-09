@@ -1,15 +1,12 @@
-import 'package:broadcast_movie/providers/theme.dart';
+import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 class location_list extends StatefulWidget {
   String name;
   String address;
-  
-  location_list({
-    required this.name,
-    required this.address
-  });
+
+  location_list({required this.name, required this.address});
 
   @override
   _location_listState createState() => _location_listState();
@@ -18,7 +15,7 @@ class location_list extends StatefulWidget {
 class _location_listState extends State<location_list> {
   @override
   Widget build(BuildContext context) {
-  final currentTheme = Provider.of<ThemeProvider>(context);
+    final ThemeController controller = Get.find();
     return GestureDetector(
       child: Container(
         padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
@@ -29,12 +26,13 @@ class _location_listState extends State<location_list> {
                 children: <Widget>[
                   Expanded(
                     child: Container(
-                      padding:EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                      padding: EdgeInsets.only(
+                          left: 20, right: 20, top: 10, bottom: 10),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25), 
-                        color: currentTheme.isDarkTheme() 
-                          ? Color(0xff085373)
-                          :Color(0xff711A1A)),
+                          borderRadius: BorderRadius.circular(25),
+                          color: controller.darkMode
+                              ? Color(0xff085373)
+                              : Color(0xff711A1A)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -43,18 +41,15 @@ class _location_listState extends State<location_list> {
                             style: TextStyle(
                                 fontSize: 16,
                                 color: const Color(0xffFFFFFF),
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
                             height: 6,
                           ),
                           Text(
-                            "Dirección: "+widget.address,
+                            "Dirección: " + widget.address,
                             style: TextStyle(
-                                fontSize: 15,
-                                color: const Color(0xffFFFFFF)
-                            ),
+                                fontSize: 15, color: const Color(0xffFFFFFF)),
                           ),
                         ],
                       ),
