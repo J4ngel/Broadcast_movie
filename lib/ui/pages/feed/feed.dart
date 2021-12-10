@@ -1,5 +1,6 @@
+import 'package:broadcast_movie/controllers/feedUserController.dart';
 import 'package:broadcast_movie/controllers/theme_controller.dart';
-import 'package:broadcast_movie/models/feedUserModel.dart';
+import 'package:broadcast_movie/data/models/feedUserModel.dart';
 import 'package:broadcast_movie/ui/pages/status/mystatus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,29 +14,7 @@ class FeedPage extends StatefulWidget {
 }
 
 class _FeedPageState extends State<FeedPage> {
-  List<FeedUsers> feedUsers = [
-    FeedUsers(
-        name: "Tim Burton",
-        messageText: "Watching Encanto",
-        imageURL: "https://randomuser.me/api/portraits/men/10.jpg",
-        time: "Now"),
-    FeedUsers(
-        name: "Edwin Reds",
-        messageText: "James Bond!! the Best",
-        imageURL: "https://randomuser.me/api/portraits/men/11.jpg",
-        time: "35 min"),
-    FeedUsers(
-        name: "Edwin Reds",
-        messageText: "James Bond!! the Best",
-        imageURL: "https://randomuser.me/api/portraits/men/11.jpg",
-        time: "35 min"),
-    FeedUsers(
-        name: "Edwin Reds",
-        messageText: "James Bond!! the Best",
-        imageURL: "https://randomuser.me/api/portraits/men/11.jpg",
-        time: "35 min"),
-  ];
-
+  dataFeedUserTem List_feed = Get.find();
   @override
   Widget build(BuildContext context) {
     final ThemeController controller = Get.find();
@@ -83,16 +62,16 @@ class _FeedPageState extends State<FeedPage> {
               ),
             ),
             ListView.builder(
-              itemCount: feedUsers.length,
+              itemCount: List_feed.feedUsers.length,
               shrinkWrap: true,
               padding: EdgeInsets.only(top: 16),
               physics: NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 return FeedsList(
-                  name: feedUsers[index].name,
-                  messageText: feedUsers[index].messageText,
-                  imageUrl: feedUsers[index].imageURL,
-                  time: feedUsers[index].time,
+                  name: List_feed.feedUsers[index].name,
+                  messageText: List_feed.feedUsers[index].messageText,
+                  imageUrl: List_feed.feedUsers[index].imageURL,
+                  time: List_feed.feedUsers[index].time,
                   isMessageRead: (index == 0 || index == 3) ? true : false,
                 );
               },

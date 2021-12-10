@@ -1,6 +1,6 @@
 import 'package:broadcast_movie/controllers/near_me_controller.dart';
 import 'package:broadcast_movie/controllers/theme_controller.dart';
-import 'package:broadcast_movie/models/Location_user_Model.dart';
+import 'package:broadcast_movie/data/models/location_user_Model.dart';
 import 'package:broadcast_movie/ui/pages/near_me/widgets/location_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,4 +1,4 @@
-import 'package:broadcast_movie/models/chatMessageModel.dart';
+import 'package:broadcast_movie/data/models/chatMessageModel.dart';
 import 'package:get/get.dart';
 
 class dataChatDetail extends GetxController {

@@ -1,4 +1,4 @@
-import 'package:broadcast_movie/models/chatUserModel.dart';
+import 'package:broadcast_movie/data/models/chatUserModel.dart';
 import 'package:get/get.dart';
 
 class dataChatUserTemp extends GetxController {

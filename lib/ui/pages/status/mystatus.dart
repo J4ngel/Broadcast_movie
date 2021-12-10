@@ -1,5 +1,7 @@
+import 'package:broadcast_movie/controllers/statusUserController.dart';
 import 'package:broadcast_movie/controllers/theme_controller.dart';
-import 'package:broadcast_movie/models/chatUserModel.dart';
+import 'package:broadcast_movie/data/models/statusUserModel.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,53 +15,7 @@ class StatusPage extends StatefulWidget {
 }
 
 class _StatusPageState extends State<StatusPage> {
-  List<ChatUsers> chatUsers = [
-    ChatUsers(
-        name: "Tim Burton",
-        messageText: "Watching Encanto",
-        imageURL: "https://randomuser.me/api/portraits/men/10.jpg",
-        time: "Now"),
-    ChatUsers(
-        name: "Edwin Reds",
-        messageText: "James Bond!! the Best",
-        imageURL: "https://randomuser.me/api/portraits/men/11.jpg",
-        time: "35 min"),
-    ChatUsers(
-        name: "James Green",
-        messageText: "Boring...",
-        imageURL: "https://randomuser.me/api/portraits/men/12.jpg",
-        time: "1 h"),
-    ChatUsers(
-        name: "Philip Fox",
-        messageText: "I love Colombia",
-        imageURL: "https://randomuser.me/api/portraits/men/13.jpg",
-        time: "3 h"),
-    ChatUsers(
-        name: "Debra Hawkins",
-        messageText: "Thankyou, It's awesome",
-        imageURL: "https://randomuser.me/api/portraits/men/14.jpg",
-        time: "23 Nov"),
-    ChatUsers(
-        name: "Jacob Pena",
-        messageText: "will update you in evening",
-        imageURL: "https://randomuser.me/api/portraits/men/15.jpg",
-        time: "17 Nov"),
-    ChatUsers(
-        name: "Andres ",
-        messageText: "Can you please share the file?",
-        imageURL: "https://randomuser.me/api/portraits/men/16.jpg",
-        time: "1 Nov"),
-    ChatUsers(
-        name: "Jhon Jairo Perez",
-        messageText: "Ja ja ja ja viendo el águila descalza",
-        imageURL: "https://randomuser.me/api/portraits/men/17.jpg",
-        time: "18 Feb"),
-    ChatUsers(
-        name: "Tim Burton",
-        messageText: "Watching Coco",
-        imageURL: "https://randomuser.me/api/portraits/men/10.jpg",
-        time: "1 Ene"),
-  ];
+  dataStatusUserTemp List_status = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -181,21 +137,23 @@ class _StatusPageState extends State<StatusPage> {
                         : const Color(0xff262D31)),
               ),
             ),
-            ListView.builder(
-              itemCount: chatUsers.length,
-              shrinkWrap: true,
-              padding: EdgeInsets.only(top: 16),
-              physics: NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return ConversationList(
-                  name: chatUsers[index].name,
-                  messageText: chatUsers[index].messageText,
-                  imageUrl: chatUsers[index].imageURL,
-                  time: chatUsers[index].time,
-                  isMessageRead: (index == 0 || index == 3) ? true : false,
-                );
-              },
-            ),
+            Obx(
+              () => ListView.builder(
+                itemCount: List_status.statusUser.length,
+                shrinkWrap: true,
+                padding: EdgeInsets.only(top: 16),
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return ConversationList(
+                    name: List_status.statusUser[index].name,
+                    messageText: List_status.statusUser[index].messageText,
+                    imageUrl: List_status.statusUser[index].imageURL,
+                    time: List_status.statusUser[index].time,
+                    isMessageRead: (index == 0 || index == 3) ? true : false,
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),

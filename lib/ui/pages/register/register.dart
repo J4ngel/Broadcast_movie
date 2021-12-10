@@ -60,7 +60,7 @@ class _RegisterState extends State<Register> {
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 30.0),
                               ),
-                              const SizedBox(width: 180),
+                              const SizedBox(width: 170),
                               IconButton(
                                 icon: const Icon(Icons.highlight_off_outlined),
                                 tooltip: 'Close',

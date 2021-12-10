@@ -62,7 +62,7 @@ class _LoginState extends State<Login> {
                                     color: Colors.white,
                                     fontSize: 30.0),
                               ),
-                              const SizedBox(width: 220),
+                              const SizedBox(width: 210),
                               IconButton(
                                 icon: const Icon(Icons.highlight_off_outlined),
                                 tooltip: 'Close',

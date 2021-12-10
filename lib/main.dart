@@ -1,4 +1,6 @@
+import 'package:broadcast_movie/controllers/feedUserController.dart';
 import 'package:broadcast_movie/controllers/near_me_controller.dart';
+import 'package:broadcast_movie/controllers/statusUserController.dart';
 import 'package:broadcast_movie/ui/pages/splash/splash.dart';
 import 'package:broadcast_movie/ui/theme/theme_management.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,8 @@ void main() {
   Get.put(dataChatUserTemp());
   Get.put(data_location_temp());
   Get.put(dataChatDetail());
+  Get.put(dataStatusUserTemp());
+  Get.put(dataFeedUserTem());
   runApp(const MyApp());
 }
 

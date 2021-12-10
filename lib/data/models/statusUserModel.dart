@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
-class ChatUsers {
+class statusUserModel {
   String name;
   String messageText;
   String imageURL;
   String time;
-  ChatUsers(
+  statusUserModel(
       {required this.name,
       required this.messageText,
       required this.imageURL,

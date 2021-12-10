@@ -1,6 +1,5 @@
 import 'package:broadcast_movie/controllers/chatDetailController.dart';
 import 'package:broadcast_movie/controllers/theme_controller.dart';
-import 'package:broadcast_movie/models/chatMessageModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
