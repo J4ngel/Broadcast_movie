@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "795381550357",
+    "firebase_url": "https://broadcast-movie-default-rtdb.firebaseio.com",
+    "project_id": "broadcast-movie",
+    "storage_bucket": "broadcast-movie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795381550357:android:1b43e44dbe034fa8352d1c",
+        "android_client_info": {
+          "package_name": "com.example.broadcast_movie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "795381550357-agf6973bqcsba1do4klk6h0igsl2be8j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlGpR891fgPMXq01Y0Icy9fGL45mBBnIk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "795381550357-agf6973bqcsba1do4klk6h0igsl2be8j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
