@@ -80,6 +80,8 @@ class _RegisterState extends State<Register> {
                         const Padding(
                             padding: EdgeInsets.all(10.0),
                             child: TextField(
+                              keyboardType: TextInputType.name,
+                              autofocus: true,
                               cursorColor: Color(0xffCC3333),
                               style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
@@ -100,6 +102,7 @@ class _RegisterState extends State<Register> {
                         const Padding(
                             padding: EdgeInsets.all(10.0),
                             child: TextField(
+                              keyboardType: TextInputType.emailAddress,
                               cursorColor: Color(0xffCC3333),
                               style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
@@ -117,6 +120,7 @@ class _RegisterState extends State<Register> {
                         const Padding(
                             padding: EdgeInsets.all(10.0),
                             child: TextField(
+                              keyboardType: TextInputType.visiblePassword,
                               obscureText: true,
                               cursorColor: Color(0xffCC3333),
                               style: TextStyle(color: Colors.white),
