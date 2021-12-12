@@ -33,7 +33,7 @@ class _LoginState extends State<Login> {
               SizedBox(
                   height: 264.0,
                   width: 274.0,
-                  child: currentTheme.isDarkTheme()
+                  child: controller.darkMode
                       ? Image.asset('assets/images/logo_dark.png',
                           fit: BoxFit.fill)
                       : Image.asset("assets/images/logo_light.png",
@@ -42,7 +42,7 @@ class _LoginState extends State<Login> {
               Container(
                   decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
-                      color: currentTheme.isDarkTheme()
+                      color: controller.darkMode
                           ? const Color(0xff085373)
                           : const Color(0xff711A1A),
                       borderRadius: BorderRadius.circular(20)),
@@ -133,7 +133,7 @@ class _LoginState extends State<Login> {
                                         const TextStyle(color: Colors.white)),
                                 Checkbox(
                                   value: _selected,
-                                  activeColor: currentTheme.isDarkTheme()
+                                  activeColor: controller.darkMode
                                       ? const Color(0xff085373)
                                       : const Color(0xff711A1A),
                                   // activeColor: const Color(0xffCC3333),
@@ -168,7 +168,7 @@ class _LoginState extends State<Login> {
                                   color: Colors.white, fontSize: 20.0),
                             ),
                             style: ElevatedButton.styleFrom(
-                                primary: currentTheme.isDarkTheme()
+                                primary: controller.darkMode
                                     ? const Color(0xff085373)
                                     : const Color(0xff711A1A),
                                 shape: RoundedRectangleBorder(
