@@ -1,3 +1,4 @@
+import 'package:broadcast_movie/controllers/login/loginController.dart';
 import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:broadcast_movie/ui/pages/splash/splash.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   final ThemeController controller = Get.find();
+  final controllerLogin = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
@@ -64,6 +66,12 @@ class _SettingsPageState extends State<SettingsPage> {
                   Get.to(() => const SplashScreen());
                 },
               ),
+              FlatButton(
+                child: const Text('Sign out'),
+                onPressed: () async {
+                  controllerLogin.signOut();
+                },
+              )
             ],
           ),
         ));

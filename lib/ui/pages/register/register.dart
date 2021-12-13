@@ -1,3 +1,4 @@
+import 'package:broadcast_movie/controllers/login/loginRegisterController.dart';
 import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:broadcast_movie/ui/pages/home/navegation.dart';
 import 'package:broadcast_movie/ui/pages/login/login.dart';
@@ -14,6 +15,7 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   // bool _selected = true;
+  final controllerRegister = Get.put(LoginRegisterController());
   @override
   Widget build(BuildContext context) {
     final ThemeController controller = Get.find();
@@ -47,137 +49,163 @@ class _RegisterState extends State<Register> {
                 alignment: Alignment.center,
                 // transform: Matrix4.rotationZ(0.05),
                 child: SizedBox(
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            children: [
-                              const Text(
-                                'Register',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 30.0),
-                              ),
-                              const SizedBox(width: 170),
-                              IconButton(
-                                icon: const Icon(Icons.highlight_off_outlined),
-                                tooltip: 'Close',
-                                onPressed: () {
-                                  // ignore: todo
-                                  // TODO: Return to initial page
-                                  Get.to(() => const SplashScreen());
-                                },
-                                iconSize: 30.0,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        const Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: TextField(
-                              keyboardType: TextInputType.name,
-                              autofocus: true,
-                              cursorColor: Color(0xffCC3333),
-                              style: TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
-                                  fillColor: Colors.white,
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white)),
-                                  labelText: 'Full Name',
-                                  labelStyle: TextStyle(color: Colors.white),
-                                  hintText: 'example@mail.com'),
-                              // onChanged: (text) {
-                              //   print('$text');
-                              // }
-                            )),
-                        const Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: TextField(
-                              keyboardType: TextInputType.emailAddress,
-                              cursorColor: Color(0xffCC3333),
-                              style: TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
-                                  fillColor: Colors.white,
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white)),
-                                  labelText: 'Email',
-                                  labelStyle: TextStyle(color: Colors.white),
-                                  hintText: 'example@mail.com'),
-                            )),
-                        const Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: TextField(
-                              keyboardType: TextInputType.visiblePassword,
-                              obscureText: true,
-                              cursorColor: Color(0xffCC3333),
-                              style: TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
-                                  fillColor: Colors.white,
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white)),
-                                  labelText: 'Password',
-                                  labelStyle: TextStyle(color: Colors.white),
-                                  hintText: 'Enter secure password'),
-                            )),
-                        const SizedBox(height: 50),
-                        ElevatedButton(
-                          child: const Text(
-                            "Register",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 20.0),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                              primary: controller.darkMode
-                                  ? const Color(0xff085373)
-                                  : const Color(0xff711A1A),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              side: const BorderSide(color: Colors.white),
-                              padding: const EdgeInsets.all(10),
-                              fixedSize: const Size(250.0, 50.0)),
-                          onPressed: () {
-                            Get.to(() => const NavagationBar());
-                          },
-                        ),
-                        const SizedBox(height: 10),
-                        Row(
+                    child: GetBuilder<LoginRegisterController>(
+                  init: LoginRegisterController(),
+                  builder: (_) {
+                    return Form(
+                      key: controllerRegister.formKey,
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            TextButton(
-                              onPressed: () {
-                                // ignore: todo
-                                // TODO Login SCREEN GOES HERE
-                                Get.to(() => const Login());
-                              },
-                              child: const Text(
-                                'Already a Member? Login!',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 12),
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Row(
+                                children: [
+                                  const Text(
+                                    'Register',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 30.0),
+                                  ),
+                                  const SizedBox(width: 170),
+                                  IconButton(
+                                    icon: const Icon(
+                                        Icons.highlight_off_outlined),
+                                    tooltip: 'Close',
+                                    onPressed: () {
+                                      // ignore: todo
+                                      // TODO: Return to initial page
+                                      Get.to(() => const SplashScreen());
+                                    },
+                                    iconSize: 30.0,
+                                    color: Colors.white,
+                                  ),
+                                ],
                               ),
                             ),
-                          ],
-                        ),
-                        const SizedBox(height: 10),
-                      ]),
-                ))
+                            const SizedBox(height: 10),
+                            const Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: TextField(
+                                  keyboardType: TextInputType.name,
+                                  autofocus: true,
+                                  cursorColor: Color(0xffCC3333),
+                                  style: TextStyle(color: Colors.white),
+                                  decoration: InputDecoration(
+                                      fillColor: Colors.white,
+                                      focusedBorder: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.white)),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.white)),
+                                      labelText: 'Full Name',
+                                      labelStyle:
+                                          TextStyle(color: Colors.white),
+                                      hintText: 'example@mail.com'),
+                                  // onChanged: (text) {
+                                  //   print('$text');
+                                  // }
+                                )),
+                            Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: TextFormField(
+                                  controller:
+                                      controllerRegister.emailController,
+                                  validator: (String? value) {
+                                    if (value!.isEmpty)
+                                      return 'Please enter some text';
+                                    return null;
+                                  },
+                                  keyboardType: TextInputType.emailAddress,
+                                  cursorColor: Color(0xffCC3333),
+                                  style: TextStyle(color: Colors.white),
+                                  decoration: InputDecoration(
+                                      fillColor: Colors.white,
+                                      focusedBorder: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.white)),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.white)),
+                                      labelText: 'Email',
+                                      labelStyle:
+                                          TextStyle(color: Colors.white),
+                                      hintText: 'example@mail.com'),
+                                )),
+                            Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: TextFormField(
+                                  controller:
+                                      controllerRegister.passwordController,
+                                  validator: (String? value) {
+                                    if (value!.isEmpty)
+                                      return 'Please enter some text';
+                                    return null;
+                                  },
+                                  keyboardType: TextInputType.visiblePassword,
+                                  obscureText: true,
+                                  cursorColor: Color(0xffCC3333),
+                                  style: TextStyle(color: Colors.white),
+                                  decoration: InputDecoration(
+                                      fillColor: Colors.white,
+                                      focusedBorder: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.white)),
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.white)),
+                                      labelText: 'Password',
+                                      labelStyle:
+                                          TextStyle(color: Colors.white),
+                                      hintText: 'Enter secure password'),
+                                )),
+                            const SizedBox(height: 50),
+                            ElevatedButton(
+                              child: const Text(
+                                "Register",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20.0),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  primary: controller.darkMode
+                                      ? const Color(0xff085373)
+                                      : const Color(0xff711A1A),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  side: const BorderSide(color: Colors.white),
+                                  padding: const EdgeInsets.all(10),
+                                  fixedSize: const Size(250.0, 50.0)),
+                              onPressed: () async {
+                                _.register();
+                              },
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    // ignore: todo
+                                    // TODO Login SCREEN GOES HERE
+                                    Get.to(() => const Login());
+                                  },
+                                  child: const Text(
+                                    'Already a Member? Login!',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 12),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                          ]),
+                    );
+                  },
+                )))
           ]),
         ));
+
     ;
   }
 }
