@@ -19,7 +19,7 @@ class _NavagationBarState extends State<NavagationBar> {
     const Home(),
     const ChatPage(),
     Near_me_page(),
-    const FeedPage(),
+    FeedPage(),
     const SettingsPage()
   ];
   @override
