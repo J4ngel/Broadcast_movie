@@ -1,4 +1,6 @@
 import 'package:broadcast_movie/controllers/theme_controller.dart';
+import 'package:broadcast_movie/data/models/movie_model.dart';
+import 'package:broadcast_movie/data/services/movie_service.dart';
 import 'package:broadcast_movie/ui/pages/home/widgets/card_movie.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,6 +13,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final peliculas = new Movie_service();
+  late List<Movie_model> movies;
+  
   @override
   Widget build(BuildContext context) {
     final ThemeController controller = Get.find();
@@ -65,34 +70,23 @@ class _HomeState extends State<Home> {
               Expanded(
                   child: Padding(
                 padding: const EdgeInsets.only(top: 10),
-                child: ListView(
-                  children: [
-                    card_movie(
-                        img: "url",
-                        title: "title",
-                        year: "year",
-                        info:
-                            "infoadsaisodjaosjidaoisjdoasjdoaijsdoiajsoidjaosidjasiojdoiasjdoi"),
-                    card_movie(
-                        img: "url", title: "title", year: "year", info: "info"),
-                    card_movie(
-                        img: "url",
-                        title: "title",
-                        year: "year",
-                        info:
-                            "infoadsaisodjaosjidaoisjdoasjdoaijsdoiajsoidjaosidjasiojdoiasjdoi"),
-                    card_movie(
-                        img: "url", title: "title", year: "year", info: "info"),
-                    card_movie(
-                        img: "url",
-                        title: "title",
-                        year: "year",
-                        info:
-                            "infoadsaisodjaosjidaoisjdoasjdoaijsdoiajsoidjaosidjasiojdoiasjdoi"),
-                    card_movie(
-                        img: "url", title: "title", year: "year", info: "info")
-                  ],
-                ),
+                child:  FutureBuilder<List<Movie_model>>(
+                  future: peliculas.load_trending_movie(),
+                  builder: (context, snapshot){
+                    if(snapshot.hasData){
+                      final items = snapshot.data!;
+                    
+                      return ListView.builder(
+                        itemCount: items.length,
+                        itemBuilder: (context,index){
+                          Movie_model movie= items[index];
+                          return card_movie(img: movie.getPosterImg(), title: movie.original_title, year: movie.release_date, info: movie.overview);
+                        },
+
+                        );
+                    }else{return Center(child: CircularProgressIndicator());}
+                  }
+                )
               ))
             ],
           ),

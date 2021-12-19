@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class card_movie extends StatelessWidget {
-  String img;
-  String title;
-  String year;
-  String info;
+  String? img;
+  String? title;
+  String? year;
+  String? info;
   
   card_movie({
     required this.img,
@@ -22,10 +22,16 @@ class card_movie extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image(
-              image: NetworkImage("https://cl.buscafs.com/www.tomatazos.com/public/uploads/images/170599/170599.jpg"),
+              image: NetworkImage(img.toString()),
               width: 120,
               height: 200,
               fit: BoxFit.fill,
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                }
+                return Center(child: CircularProgressIndicator());}
               ),
 
             Expanded(child: Padding(
@@ -33,9 +39,9 @@ class card_movie extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                  Text(year, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-                  Text(info)],
+                  Text(title.toString(), style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  Text(year.toString(), style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+                  Text(info.toString())],
                 ),
             )
             ), 
