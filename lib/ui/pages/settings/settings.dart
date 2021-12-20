@@ -51,7 +51,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               ElevatedButton(
                 child: const Text(
-                  "Iniciar sesión",
+                  "Cerrar sesión",
                   style: TextStyle(color: Colors.white, fontSize: 20.0),
                 ),
                 style: ElevatedButton.styleFrom(
@@ -63,15 +63,15 @@ class _SettingsPageState extends State<SettingsPage> {
                     padding: const EdgeInsets.all(10),
                     fixedSize: const Size(250.0, 50.0)),
                 onPressed: () {
-                  Get.to(() => const SplashScreen());
-                },
-              ),
-              FlatButton(
-                child: const Text('Sign out'),
-                onPressed: () async {
                   controllerLogin.signOut();
                 },
-              )
+              ),
+              // FlatButton(
+              //   child: const Text('Sign out'),
+              //   onPressed: () async {
+              //     controllerLogin.signOut();
+              //   },
+              // )
             ],
           ),
         ));

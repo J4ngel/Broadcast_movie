@@ -39,15 +39,15 @@ class LoginController extends GetxController {
     final User? user = await _auth.currentUser;
 
     if (user == null) {
-      Get.snackbar('Out', 'No one has signed in.',
+      Get.snackbar('Out', 'Nadie ha iniciado sesión.',
           snackPosition: SnackPosition.BOTTOM);
       return;
     }
 
     _signOut();
     final String uid = user.uid;
-    Get.snackbar('Out', uid + 'has successfully signed out',
+    Get.snackbar('Out', uid + 'ha cerrado sesión correctamente',
         snackPosition: SnackPosition.BOTTOM);
-    Get.to(() => SplashScreen());
+    Get.offNamed('/splash');
   }
 }
