@@ -2,7 +2,7 @@ import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:broadcast_movie/data/models/post_model.dart';
 import 'package:broadcast_movie/data/services/post_service.dart';
 import 'package:broadcast_movie/ui/pages/feed/widgets/feed_card.dart';
-import 'package:broadcast_movie/ui/pages/status/mystatus.dart';
+import 'package:broadcast_movie/ui/pages/status/status_page.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +18,6 @@ class _FeedPageState extends State<FeedPage> {
   ScrollController _scrollController = ScrollController();
   TextEditingController _post_controller = TextEditingController();
 
-  //dataFeedUserTem List_feed = Get.find();
   @override
   Widget build(BuildContext context) {
     final ThemeController controller = Get.find();

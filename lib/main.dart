@@ -1,5 +1,4 @@
 import 'package:broadcast_movie/controllers/near_me_controller.dart';
-import 'package:broadcast_movie/controllers/statusUserController.dart';
 import 'package:broadcast_movie/ui/pages/forgot_password/forgot_password.dart';
 import 'package:broadcast_movie/ui/pages/home/navegation.dart';
 import 'package:broadcast_movie/ui/pages/login/login.dart';
@@ -17,7 +16,6 @@ void main() async {
   Get.put(dataChatUserTemp());
   Get.put(data_location_temp());
   Get.put(dataChatDetail());
-  Get.put(dataStatusUserTemp());
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
