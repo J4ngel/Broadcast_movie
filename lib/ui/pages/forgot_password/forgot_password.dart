@@ -1,3 +1,5 @@
+import 'package:broadcast_movie/controllers/login/loginController.dart';
+import 'package:broadcast_movie/controllers/login/resetPasswordController.dart';
 import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:broadcast_movie/ui/pages/login/login.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,10 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
+  // final controllerLogin = Get.put(LoginController());
+  TextEditingController emailcontroller = TextEditingController();
+  ResetPasswordController resetController = ResetPasswordController();
+
   @override
   Widget build(BuildContext context) {
     final ThemeController controller = Get.find();
@@ -31,7 +37,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ),
               const SizedBox(height: 50),
               Text(
-                '¿Olvidste tu contraseña?',
+                '¿Olvidaste tu contraseña?',
                 style: TextStyle(
                     color: controller.darkMode
                         ? Colors.white
@@ -53,6 +59,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
+                  controller: emailcontroller,
                   cursorColor: controller.darkMode
                       ? Colors.white
                       : const Color(0xff711A1A),
@@ -99,14 +106,18 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     // padding: const EdgeInsets.all(10),
                     fixedSize: const Size(250.0, 50.0)),
                 onPressed: () {
-                  Get.to(() => const Login());
+                  if (emailcontroller.text.isNotEmpty) {
+                    resetController.resetPassword(
+                        context, emailcontroller.text);
+                  } else {
+                    resetController.errorbox(
+                        context, 'Los campos no pueden estar vacios');
+                  }
                 },
               ),
               const SizedBox(height: 20),
               TextButton(
                 onPressed: () {
-                  // ignore: todo
-                  // TODO FORGOT PASSWORD SCREEN GOES HERE
                   Get.offNamed('/login');
                 },
                 child: Text(
