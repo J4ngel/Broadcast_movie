@@ -22,6 +22,8 @@ class LoginController extends GetxController {
           .user!;
       Get.snackbar('${user.email}', 'inició sesión');
       print('Ingreso bien');
+      // print('${user.email}');
+      // print('${user}');
       Future.delayed(Duration(seconds: 2), () {
         Get.offNamed('/navagationBar');
       });
@@ -46,7 +48,7 @@ class LoginController extends GetxController {
 
     _signOut();
     final String uid = user.uid;
-    Get.snackbar('Out', uid + 'ha cerrado sesión correctamente',
+    Get.snackbar('${user.email}', 'ha cerrado sesión correctamente',
         snackPosition: SnackPosition.BOTTOM);
     Get.offNamed('/splash');
   }
