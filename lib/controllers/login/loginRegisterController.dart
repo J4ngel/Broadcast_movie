@@ -27,9 +27,9 @@ class LoginRegisterController extends GetxController {
         .user;
     if (user != null) {
       success = true;
-      print('register OK');
+      print('Registro exitoso.');
       Future.delayed(Duration(seconds: 2), () {
-        Get.to(() => Login());
+        Get.offNamed('/navagationBar');
       });
       userEmail = user.email!;
     } else {

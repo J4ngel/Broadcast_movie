@@ -28,8 +28,8 @@ class LoginController extends GetxController {
         Get.offNamed('/navagationBar');
       });
     } catch (e) {
-      Get.snackbar('Error',
-          'Error al iniciar sesión con correo electrónico y contraseña.');
+      Get.snackbar('Error. Intente de nuevo',
+          'Correo electrónico y/o contraseña incorrectos.');
     }
   }
 
@@ -52,4 +52,18 @@ class LoginController extends GetxController {
         snackPosition: SnackPosition.BOTTOM);
     Get.offNamed('/splash');
   }
+
+  // // reset password
+  // void resetPassword(context, email) async {
+  //   try {
+  //     await _auth
+  //         .sendPasswordResetEmail(email: email)
+  //         .then((value) => {Get.offNamed('/login')});
+  //     Get.snackbar(
+  //         'Correo Enviado', 'Revise su correo para reestablecer contraseña.',
+  //         snackPosition: SnackPosition.TOP);
+  //   } catch (e) {
+  //     Get.snackbar('Error. Intente de nuevo', 'Correo electrónico incorrecto');
+  //   }
+  // }
 }
