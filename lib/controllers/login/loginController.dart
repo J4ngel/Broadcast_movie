@@ -20,13 +20,14 @@ class LoginController extends GetxController {
         password: passwordController.text,
       ))
           .user!;
-      Get.snackbar('${user.email}', 'signed in');
+      Get.snackbar('${user.email}', 'inició sesión');
       print('Ingreso bien');
       Future.delayed(Duration(seconds: 2), () {
-        Get.to(() => NavagationBar());
+        Get.offNamed('/navagationBar');
       });
     } catch (e) {
-      Get.snackbar('fallo', 'Failed to sign in with Email & Password');
+      Get.snackbar('Error',
+          'Error al iniciar sesión con correo electrónico y contraseña.');
     }
   }
 

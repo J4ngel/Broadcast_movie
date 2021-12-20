@@ -60,16 +60,17 @@ class _LoginState extends State<Login> {
                             Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   const Text(
-                                    'Login',
+                                    'Iniciar sesión',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                         // fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                         fontSize: 30.0),
                                   ),
-                                  const SizedBox(width: 210),
                                   IconButton(
                                     icon: const Icon(
                                         Icons.highlight_off_outlined),
@@ -77,7 +78,7 @@ class _LoginState extends State<Login> {
                                     onPressed: () {
                                       // ignore: todo
                                       // TODO: Return to initial page
-                                      Get.back();
+                                      Get.offNamed('/splash');
                                     },
                                     iconSize: 30.0,
                                     color: Colors.white,
@@ -87,19 +88,20 @@ class _LoginState extends State<Login> {
                             ),
                             const SizedBox(height: 30),
                             Padding(
-                                padding: EdgeInsets.all(10.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: TextFormField(
                                   controller: controllerLogin.emailController,
                                   validator: (String? value) {
-                                    if (value!.isEmpty)
+                                    if (value!.isEmpty) {
                                       return 'Please enter some text';
+                                    }
                                     return null;
                                   },
                                   autofocus: true,
                                   keyboardType: TextInputType.emailAddress,
-                                  cursorColor: Color(0xffCC3333),
-                                  style: TextStyle(color: Colors.white),
-                                  decoration: InputDecoration(
+                                  cursorColor: const Color(0xffCC3333),
+                                  style: const TextStyle(color: Colors.white),
+                                  decoration: const InputDecoration(
                                       fillColor: Colors.white,
                                       focusedBorder: OutlineInputBorder(
                                           borderSide:
@@ -107,25 +109,26 @@ class _LoginState extends State<Login> {
                                       enabledBorder: OutlineInputBorder(
                                           borderSide:
                                               BorderSide(color: Colors.white)),
-                                      labelText: 'Email',
+                                      labelText: 'Correo',
                                       labelStyle:
                                           TextStyle(color: Colors.white),
-                                      hintText: 'example@mail.com'),
+                                      hintText: 'ejemplo@correo.com'),
                                 )),
                             Padding(
-                                padding: EdgeInsets.all(10.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: TextFormField(
                                   controller:
                                       controllerLogin.passwordController,
                                   validator: (String? value) {
-                                    if (value!.isEmpty)
+                                    if (value!.isEmpty) {
                                       return 'Please enter some text';
+                                    }
                                     return null;
                                   },
                                   obscureText: true,
-                                  cursorColor: Color(0xffCC3333),
-                                  style: TextStyle(color: Colors.white),
-                                  decoration: InputDecoration(
+                                  cursorColor: const Color(0xffCC3333),
+                                  style: const TextStyle(color: Colors.white),
+                                  decoration: const InputDecoration(
                                       fillColor: Colors.white,
                                       focusedBorder: OutlineInputBorder(
                                           borderSide:
@@ -133,43 +136,50 @@ class _LoginState extends State<Login> {
                                       enabledBorder: OutlineInputBorder(
                                           borderSide:
                                               BorderSide(color: Colors.white)),
-                                      labelText: 'Password',
+                                      labelText: 'Contraseña',
                                       labelStyle:
                                           TextStyle(color: Colors.white),
-                                      hintText: 'Enter secure password'),
+                                      hintText: 'Ingrese contraseña segura'),
                                 )),
                             Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                      _selected
-                                          ? "Remember me"
-                                          : "Don't remember me",
-                                      style:
-                                          const TextStyle(color: Colors.white)),
-                                  Checkbox(
-                                    value: _selected,
-                                    activeColor: controller.darkMode
-                                        ? const Color(0xff085373)
-                                        : const Color(0xff711A1A),
-                                    // activeColor: const Color(0xffCC3333),
-                                    side: const BorderSide(color: Colors.white),
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _selected = value!;
-                                      });
-                                    },
+                                  Row(
+                                    children: [
+                                      Text(
+                                          _selected
+                                              ? "Recordar"
+                                              : "No recordar",
+                                          style: const TextStyle(
+                                              color: Colors.white)),
+                                      Checkbox(
+                                        value: _selected,
+                                        activeColor: controller.darkMode
+                                            ? const Color(0xff085373)
+                                            : const Color(0xff711A1A),
+                                        // activeColor: const Color(0xffCC3333),
+                                        side: const BorderSide(
+                                            color: Colors.white),
+                                        onChanged: (value) {
+                                          setState(() {
+                                            _selected = value!;
+                                          });
+                                        },
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(width: 50),
+                                  // const SizedBox(width: 50),
                                   TextButton(
                                     onPressed: () {
                                       // ignore: todo
                                       // TODO FORGOT PASSWORD SCREEN GOES HERE
-                                      Get.to(() => const ForgotPassword());
+                                      Get.offNamed('/forgot');
                                     },
                                     child: const Text(
-                                      'Forgot Password?',
+                                      '¿Olvidó su contraseña?',
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 10),
                                     ),
@@ -180,7 +190,7 @@ class _LoginState extends State<Login> {
                             const SizedBox(height: 10),
                             ElevatedButton(
                               child: const Text(
-                                "Login",
+                                "Iniciar sesión",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20.0),
                               ),
@@ -205,10 +215,10 @@ class _LoginState extends State<Login> {
                                   onPressed: () {
                                     // ignore: todo
                                     // TODO REGISTER SCREEN GOES HERE
-                                    Get.to(() => const Register());
+                                    Get.offNamed('/register');
                                   },
                                   child: const Text(
-                                    'New Here? Register!',
+                                    '¿Nuevo aquí? ¡Registrese!',
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 12),
                                   ),

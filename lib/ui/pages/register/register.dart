@@ -60,14 +60,15 @@ class _RegisterState extends State<Register> {
                             Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   const Text(
-                                    'Register',
+                                    'Registrarse',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 30.0),
                                   ),
-                                  const SizedBox(width: 170),
                                   IconButton(
                                     icon: const Icon(
                                         Icons.highlight_off_outlined),
@@ -75,7 +76,7 @@ class _RegisterState extends State<Register> {
                                     onPressed: () {
                                       // ignore: todo
                                       // TODO: Return to initial page
-                                      Get.to(() => const SplashScreen());
+                                      Get.offNamed('/splash');
                                     },
                                     iconSize: 30.0,
                                     color: Colors.white,
@@ -99,28 +100,29 @@ class _RegisterState extends State<Register> {
                                       enabledBorder: OutlineInputBorder(
                                           borderSide:
                                               BorderSide(color: Colors.white)),
-                                      labelText: 'Full Name',
+                                      labelText: 'Nombre',
                                       labelStyle:
                                           TextStyle(color: Colors.white),
-                                      hintText: 'example@mail.com'),
+                                      hintText: 'Sócrates'),
                                   // onChanged: (text) {
                                   //   print('$text');
                                   // }
                                 )),
                             Padding(
-                                padding: EdgeInsets.all(10.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: TextFormField(
                                   controller:
                                       controllerRegister.emailController,
                                   validator: (String? value) {
-                                    if (value!.isEmpty)
+                                    if (value!.isEmpty) {
                                       return 'Please enter some text';
+                                    }
                                     return null;
                                   },
                                   keyboardType: TextInputType.emailAddress,
-                                  cursorColor: Color(0xffCC3333),
-                                  style: TextStyle(color: Colors.white),
-                                  decoration: InputDecoration(
+                                  cursorColor: const Color(0xffCC3333),
+                                  style: const TextStyle(color: Colors.white),
+                                  decoration: const InputDecoration(
                                       fillColor: Colors.white,
                                       focusedBorder: OutlineInputBorder(
                                           borderSide:
@@ -128,26 +130,27 @@ class _RegisterState extends State<Register> {
                                       enabledBorder: OutlineInputBorder(
                                           borderSide:
                                               BorderSide(color: Colors.white)),
-                                      labelText: 'Email',
+                                      labelText: 'Correo',
                                       labelStyle:
                                           TextStyle(color: Colors.white),
-                                      hintText: 'example@mail.com'),
+                                      hintText: 'ejemplo@correo.com'),
                                 )),
                             Padding(
-                                padding: EdgeInsets.all(10.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: TextFormField(
                                   controller:
                                       controllerRegister.passwordController,
                                   validator: (String? value) {
-                                    if (value!.isEmpty)
+                                    if (value!.isEmpty) {
                                       return 'Please enter some text';
+                                    }
                                     return null;
                                   },
                                   keyboardType: TextInputType.visiblePassword,
                                   obscureText: true,
-                                  cursorColor: Color(0xffCC3333),
-                                  style: TextStyle(color: Colors.white),
-                                  decoration: InputDecoration(
+                                  cursorColor: const Color(0xffCC3333),
+                                  style: const TextStyle(color: Colors.white),
+                                  decoration: const InputDecoration(
                                       fillColor: Colors.white,
                                       focusedBorder: OutlineInputBorder(
                                           borderSide:
@@ -155,7 +158,7 @@ class _RegisterState extends State<Register> {
                                       enabledBorder: OutlineInputBorder(
                                           borderSide:
                                               BorderSide(color: Colors.white)),
-                                      labelText: 'Password',
+                                      labelText: 'Constraseña',
                                       labelStyle:
                                           TextStyle(color: Colors.white),
                                       hintText: 'Enter secure password'),
@@ -163,7 +166,7 @@ class _RegisterState extends State<Register> {
                             const SizedBox(height: 50),
                             ElevatedButton(
                               child: const Text(
-                                "Register",
+                                "Registrarse",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20.0),
                               ),
@@ -188,10 +191,10 @@ class _RegisterState extends State<Register> {
                                   onPressed: () {
                                     // ignore: todo
                                     // TODO Login SCREEN GOES HERE
-                                    Get.to(() => const Login());
+                                    Get.offNamed('/login');
                                   },
                                   child: const Text(
-                                    'Already a Member? Login!',
+                                    '¿Ya tienes una cuenta? ¡Inicia sesión!',
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 12),
                                   ),

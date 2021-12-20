@@ -31,7 +31,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ),
               const SizedBox(height: 50),
               Text(
-                'Forgot your password?',
+                '¿Olvidste tu contraseña?',
                 style: TextStyle(
                     color: controller.darkMode
                         ? Colors.white
@@ -41,7 +41,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ),
               const SizedBox(height: 10),
               Text(
-                'Enter your email below to reset your password',
+                'Ingresa tu correo para reestablecer tu contraseña.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: controller.darkMode
@@ -75,19 +75,19 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             ? Colors.white
                             : const Color(0xff711A1A),
                       )),
-                      labelText: 'Email',
+                      labelText: 'Correo',
                       labelStyle: TextStyle(
                         color: controller.darkMode
                             ? Colors.white
                             : const Color(0xff711A1A),
                       ),
-                      hintText: 'example@mail.com'),
+                      hintText: 'ejemplo@correo.com'),
                 ),
               ),
               const SizedBox(height: 50),
               ElevatedButton(
                 child: const Text(
-                  "Submit",
+                  "Enviar",
                   style: TextStyle(color: Colors.white, fontSize: 20.0),
                 ),
                 style: ElevatedButton.styleFrom(
@@ -107,10 +107,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 onPressed: () {
                   // ignore: todo
                   // TODO FORGOT PASSWORD SCREEN GOES HERE
-                  Get.back();
+                  Get.offNamed('/login');
                 },
                 child: Text(
-                  'Cancel',
+                  'Cancelar',
                   style: TextStyle(
                       color: controller.darkMode
                           ? const Color(0xff085373)
