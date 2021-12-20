@@ -206,6 +206,8 @@ class _LoginState extends State<Login> {
                                   fixedSize: const Size(250.0, 50.0)),
                               onPressed: () async {
                                 _.signInWithEmailAndPassword();
+                                controllerLogin.emailController.clear();
+                                controllerLogin.passwordController.clear();
                               },
                             ),
                             const SizedBox(height: 10),
