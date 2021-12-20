@@ -17,7 +17,7 @@ class _NavagationBarState extends State<NavagationBar> {
   int _paginaActual = 0;
   final List<Widget> _paginas = [
     const Home(),
-    const ChatPage(),
+    ChatPage(),
     Near_me_page(),
     const FeedPage(),
     const SettingsPage()

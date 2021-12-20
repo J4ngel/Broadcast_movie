@@ -1,3 +1,4 @@
+import 'package:broadcast_movie/controllers/ChatController.dart';
 import 'package:broadcast_movie/controllers/feedUserController.dart';
 import 'package:broadcast_movie/controllers/near_me_controller.dart';
 import 'package:broadcast_movie/controllers/statusUserController.dart';
@@ -18,6 +19,7 @@ void main() async {
   Get.put(dataFeedUserTem());
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  Get.put(ChatController());
   runApp(const MyApp());
 }
 
