@@ -85,9 +85,16 @@ class _RegisterState extends State<Register> {
                               ),
                             ),
                             const SizedBox(height: 10),
-                            const Padding(
+                            Padding(
                                 padding: EdgeInsets.all(10.0),
-                                child: TextField(
+                                child: TextFormField(
+                                  controller: controllerRegister.nameController,
+                                  validator: (String? value) {
+                                    if (value!.isEmpty) {
+                                      return 'Please enter some text';
+                                    }
+                                    return null;
+                                  },
                                   keyboardType: TextInputType.name,
                                   autofocus: true,
                                   cursorColor: Color(0xffCC3333),

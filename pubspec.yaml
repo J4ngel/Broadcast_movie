@@ -43,7 +43,6 @@ dependencies:
   firebase_auth: ^3.3.3
   google_sign_in: ^5.2.1
   tmdb_api: ^2.0.0
-  http: ^0.13.4
   loggy: ^2.0.1
 
 dev_dependencies:
