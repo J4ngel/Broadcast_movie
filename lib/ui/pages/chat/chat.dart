@@ -1,4 +1,5 @@
 import 'package:broadcast_movie/controllers/ChatController.dart';
+import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:broadcast_movie/data/models/chat/message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -18,6 +19,7 @@ class _ChatPageState extends State<ChatPage> {
   late TextEditingController _controller;
   late ScrollController _scrollController;
   ChatController chatController = Get.put(ChatController());
+  final ThemeController controller = Get.find();
 
   @override
   void initState() {
@@ -37,13 +39,24 @@ class _ChatPageState extends State<ChatPage> {
 
   Widget _item(Message element, int posicion, String uid) {
     logInfo('Current user? -> ${uid == element.user} msg -> ${element.text}');
-    return Card(
-      margin: EdgeInsets.all(4.0),
-      color: uid == element.user ? Colors.yellow[200] : Colors.grey[300],
+    return Container(
+      margin: EdgeInsets.only(left: 14, right: 14, top: 10, bottom: 10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: uid == element.user
+            ? controller.darkMode
+                ? const Color(0xff085373)
+                : const Color(0xff711A1A)
+            : controller.darkMode
+                ? const Color(0xff131C21)
+                : const Color(0xff990000),
+      ),
+      padding: EdgeInsets.all(5),
       child: ListTile(
         title: Text(
-          element.text,
+          element.mail + '\n\n' + element.text,
           textAlign: uid == element.user ? TextAlign.right : TextAlign.left,
+          style: TextStyle(fontSize: 15, color: Colors.white),
         ),
       ),
     );
@@ -77,12 +90,15 @@ class _ChatPageState extends State<ChatPage> {
         Expanded(
           flex: 3,
           child: Container(
-            margin: const EdgeInsets.only(left: 5.0, top: 5.0),
+            margin: const EdgeInsets.only(left: 10.0, top: 5.0),
             child: TextField(
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Your message',
-              ),
+                  hintText: "Write message...",
+                  hintStyle: TextStyle(
+                      color: controller.darkMode
+                          ? const Color(0xffFFFFFF)
+                          : const Color(0xff262D31)),
+                  border: InputBorder.none),
               onSubmitted: (value) {
                 _sendMsg(_controller.text);
                 _controller.clear();
@@ -91,12 +107,31 @@ class _ChatPageState extends State<ChatPage> {
             ),
           ),
         ),
-        TextButton(
+        /* TextButton(
             child: Text('Send'),
             onPressed: () {
               _sendMsg(_controller.text);
               _controller.clear();
-            })
+            }) */
+
+        Container(
+          margin: EdgeInsets.all(5.0),
+          child: FloatingActionButton(
+            onPressed: () {
+              _sendMsg(_controller.text);
+              _controller.clear();
+            },
+            child: Icon(
+              Icons.send,
+              color: Colors.white,
+              size: 18,
+            ),
+            backgroundColor: controller.darkMode
+                ? const Color(0xff085373)
+                : const Color(0xff711A1A),
+            elevation: 0,
+          ),
+        )
       ],
     );
   }
@@ -108,10 +143,66 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    String? email = FirebaseAuth.instance.currentUser!.email;
     WidgetsBinding.instance!.addPostFrameCallback((_) => _scrollToEnd());
-    return Container(
-      child: Column(
-        children: [Expanded(flex: 4, child: _list()), _textInput()],
+    return Scaffold(
+      backgroundColor: controller.darkMode
+          ? const Color(0XFF262D31)
+          : const Color(0XFFCFCFCF),
+      appBar: AppBar(
+        backgroundColor: controller.darkMode
+            ? const Color(0xff085373)
+            : const Color(0xff711A1A),
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        flexibleSpace: SafeArea(
+          child: Container(
+            padding: EdgeInsets.only(right: 16),
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 10,
+                ),
+                CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"),
+                  maxRadius: 20,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        email!,
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xffFFFFFF)),
+                      ),
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Text(
+                        "Online",
+                        style: TextStyle(
+                            color: const Color(0xffFFFFFF), fontSize: 13),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      body: Container(
+        child: Column(
+          children: [Expanded(flex: 4, child: _list()), _textInput()],
+        ),
       ),
     );
   }

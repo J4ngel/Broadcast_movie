@@ -4,18 +4,17 @@ class Message {
   String? key;
   String text;
   String user;
+  String mail;
 
-  Message(this.text, this.user);
+  Message(this.text, this.user, this.mail);
 
   Message.fromSnapshot(DataSnapshot snapshot)
       : key = snapshot.key,
         text = snapshot.value["text"],
-        user = snapshot.value["uid"];
+        user = snapshot.value["uid"],
+        mail = snapshot.value["email"];
 
   toJson() {
-    return {
-      "text": text,
-      "user": user,
-    };
+    return {"text": text, "user": user, "email": mail};
   }
 }

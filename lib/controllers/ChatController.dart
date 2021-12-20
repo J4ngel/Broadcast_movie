@@ -48,11 +48,12 @@ class ChatController extends GetxController {
 
   Future<void> sendMsg(String text) async {
     String? uid = FirebaseAuth.instance.currentUser?.uid;
+    String? email = FirebaseAuth.instance.currentUser?.email;
     try {
       databaseReference
           .child("fluttermessages")
           .push()
-          .set({'text': text, 'uid': uid});
+          .set({'text': text, 'uid': uid, 'email': email});
     } catch (error) {
       logError("Error sending message $error");
       return Future.error(error);

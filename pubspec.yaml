@@ -41,9 +41,9 @@ dependencies:
   firebase_database: ^8.2.0
   intl: ^0.17.0
   firebase_auth: ^3.3.3
-  google_sign_in: ^5.2.1
   tmdb_api: ^2.0.0
   loggy: ^2.0.1
+  cloud_firestore: ^3.1.5
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,5 @@
 import 'package:broadcast_movie/controllers/login/loginController.dart';
 import 'package:broadcast_movie/controllers/theme_controller.dart';
-import 'package:broadcast_movie/ui/pages/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +18,7 @@ class _SettingsPageState extends State<SettingsPage> {
     return Obx(() => Scaffold(
           backgroundColor: controller.darkMode
               ? const Color(0XFF262D31)
-              : const Color(0XFFF8F9FA),
+              : const Color(0XFFCFCFCF),
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

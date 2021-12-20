@@ -15,14 +15,14 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final peliculas = new Movie_service();
   late List<Movie_model> movies;
-  
+
   @override
   Widget build(BuildContext context) {
     final ThemeController controller = Get.find();
     return Scaffold(
         backgroundColor: controller.darkMode
             ? const Color(0XFF262D31)
-            : const Color(0XFFF8F9FA),
+            : const Color(0XFFCFCFCF),
         appBar: AppBar(
           title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,25 +69,28 @@ class _HomeState extends State<Home> {
               ),
               Expanded(
                   child: Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child:  FutureBuilder<List<Movie_model>>(
-                  future: peliculas.load_trending_movie(),
-                  builder: (context, snapshot){
-                    if(snapshot.hasData){
-                      final items = snapshot.data!;
-                    
-                      return ListView.builder(
-                        itemCount: items.length,
-                        itemBuilder: (context,index){
-                          Movie_model movie= items[index];
-                          return card_movie(img: movie.getPosterImg(), title: movie.original_title, year: movie.release_date, info: movie.overview);
-                        },
+                      padding: const EdgeInsets.only(top: 10),
+                      child: FutureBuilder<List<Movie_model>>(
+                          future: peliculas.load_trending_movie(),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              final items = snapshot.data!;
 
-                        );
-                    }else{return Center(child: CircularProgressIndicator());}
-                  }
-                )
-              ))
+                              return ListView.builder(
+                                itemCount: items.length,
+                                itemBuilder: (context, index) {
+                                  Movie_model movie = items[index];
+                                  return card_movie(
+                                      img: movie.getPosterImg(),
+                                      title: movie.original_title,
+                                      year: movie.release_date,
+                                      info: movie.overview);
+                                },
+                              );
+                            } else {
+                              return Center(child: CircularProgressIndicator());
+                            }
+                          })))
             ],
           ),
         ));
