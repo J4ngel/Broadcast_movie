@@ -1,6 +1,9 @@
 import 'package:broadcast_movie/controllers/near_me_controller.dart';
 import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:broadcast_movie/data/models/location_user_Model.dart';
+import 'package:broadcast_movie/domain/use_case/controllers/location_controller.dart';
+import 'package:broadcast_movie/domain/use_case/controllers/permissions_controller.dart';
+import 'package:broadcast_movie/domain/use_case/location_manager.dart';
 import 'package:broadcast_movie/ui/pages/near_me/widgets/location_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,11 +15,23 @@ class Near_me_page extends StatefulWidget {
   State<Near_me_page> createState() => _Near_me_pageState();
 }
 
+
 class _Near_me_pageState extends State<Near_me_page> {
+  late Permissions_controller permissions_controller;
+  late Location_controller location_controller;
+  late Location_manager location_manager;
+
   bool is_visible = false;
-  location_users my_info =
-      location_users(name: "Andrés Rivera", address: "Cll 23 No 45-30");
+  location_users my_info = location_users(name: "Andrés Rivera", address: "Cll 23 No 45-30");
   data_location_temp List_users = Get.find();
+
+  @override
+  void initState() {
+    super.initState();
+    permissions_controller = Get.find();
+    location_controller = Get.find();
+    location_manager = Location_manager();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +39,7 @@ class _Near_me_pageState extends State<Near_me_page> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Cerca de mi"),
-          actions: [
+          /* actions: [
             Container(
                 padding: EdgeInsets.only(right: 20),
                 child: Row(
@@ -33,7 +48,7 @@ class _Near_me_pageState extends State<Near_me_page> {
                     IconButton(onPressed: () {}, icon: Icon(Icons.map))
                   ],
                 ))
-          ],
+          ], */
           centerTitle: true,
           backgroundColor: controller.darkMode
               ? const Color(0xff085373)
@@ -43,10 +58,18 @@ class _Near_me_pageState extends State<Near_me_page> {
             ? const Color(0XFF262D31)
             : const Color(0XFFCFCFCF),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              is_visible = !is_visible;
-            });
+          onPressed: () async{
+            location_controller.location.value = null;
+            if(permissions_controller.location_grated){
+              print("Hola");
+              final position = await location_manager.get_current_location();
+              location_controller.location.value = position;
+              //Get.snackbar('Tu ubicación es:','Latitud ${position.latitude} - Longitud ${position.longitude}');
+              setState(() {
+                is_visible = !is_visible;
+                my_info.address = "Latitud: ${position.latitude} - Longitud: ${position.longitude}";
+              });
+            }
           },
           child: Icon(Icons.gps_fixed), //assignment_ind
           backgroundColor: controller.darkMode
