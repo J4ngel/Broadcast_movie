@@ -1,6 +1,10 @@
 import 'package:broadcast_movie/controllers/ChatController.dart';
 import 'package:broadcast_movie/controllers/near_me_controller.dart';
 import 'package:broadcast_movie/controllers/statusUserController.dart';
+import 'package:broadcast_movie/ui/pages/forgot_password/forgot_password.dart';
+import 'package:broadcast_movie/ui/pages/home/navegation.dart';
+import 'package:broadcast_movie/ui/pages/login/login.dart';
+import 'package:broadcast_movie/ui/pages/register/register.dart';
 import 'package:broadcast_movie/ui/pages/splash/splash.dart';
 import 'package:broadcast_movie/ui/theme/theme_management.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -56,6 +60,13 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         body: SplashScreen(),
       ),
+      routes: {
+        '/splash': (context) => const SplashScreen(),
+        '/navagationBar': (context) => const NavagationBar(),
+        '/register': (context) => const Register(),
+        '/login': (context) => const Login(),
+        '/forgot': (context) => const ForgotPassword(),
+      },
     );
   }
 }

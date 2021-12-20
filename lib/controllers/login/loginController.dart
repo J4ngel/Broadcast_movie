@@ -20,13 +20,14 @@ class LoginController extends GetxController {
         password: passwordController.text,
       ))
           .user!;
-      Get.snackbar('${user.email}', 'signed in');
+      Get.snackbar('${user.email}', 'inició sesión');
       print('Ingreso bien');
       Future.delayed(Duration(seconds: 2), () {
-        Get.to(() => NavagationBar());
+        Get.offNamed('/navagationBar');
       });
     } catch (e) {
-      Get.snackbar('fallo', 'Failed to sign in with Email & Password');
+      Get.snackbar('Error',
+          'Error al iniciar sesión con correo electrónico y contraseña.');
     }
   }
 
@@ -38,15 +39,15 @@ class LoginController extends GetxController {
     final User? user = await _auth.currentUser;
 
     if (user == null) {
-      Get.snackbar('Out', 'No one has signed in.',
+      Get.snackbar('Out', 'Nadie ha iniciado sesión.',
           snackPosition: SnackPosition.BOTTOM);
       return;
     }
 
     _signOut();
     final String uid = user.uid;
-    Get.snackbar('Out', uid + 'has successfully signed out',
+    Get.snackbar('Out', uid + 'ha cerrado sesión correctamente',
         snackPosition: SnackPosition.BOTTOM);
-    Get.to(() => SplashScreen());
+    Get.offNamed('/splash');
   }
 }

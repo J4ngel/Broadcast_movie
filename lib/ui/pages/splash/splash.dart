@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'Welcome!',
+                '¡Bienvenid@!',
                 style: TextStyle(
                     color: controller.darkMode
                         ? Colors.white
@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text(
-                'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."',
+                'En Broadcast Movie encontrarás una red social que reune a amantes de las películas como tú.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: controller.darkMode
@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
             const SizedBox(height: 50),
             ElevatedButton(
               child: const Text(
-                "Register",
+                "Registrarse",
                 style: TextStyle(color: Colors.white, fontSize: 20.0),
               ),
               style: ElevatedButton.styleFrom(
@@ -72,13 +72,13 @@ class _SplashScreenState extends State<SplashScreen> {
                   padding: const EdgeInsets.all(10),
                   fixedSize: const Size(250.0, 50.0)),
               onPressed: () {
-                Get.to(() => const Register());
+                Get.offNamed('/register');
               },
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               child: const Text(
-                "Login",
+                "Iniciar sesión",
                 style: TextStyle(color: Colors.white, fontSize: 20.0),
               ),
               style: ElevatedButton.styleFrom(
@@ -90,7 +90,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   padding: const EdgeInsets.all(10),
                   fixedSize: const Size(250.0, 50.0)),
               onPressed: () {
-                Get.to(() => const Login());
+                Get.offNamed('/login');
               },
             ),
             const SizedBox(height: 10),
