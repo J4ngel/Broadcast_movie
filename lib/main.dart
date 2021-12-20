@@ -1,4 +1,3 @@
-import 'package:broadcast_movie/controllers/feedUserController.dart';
 import 'package:broadcast_movie/controllers/near_me_controller.dart';
 import 'package:broadcast_movie/controllers/statusUserController.dart';
 import 'package:broadcast_movie/ui/pages/splash/splash.dart';
@@ -10,12 +9,11 @@ import 'controllers/chatDetailController.dart';
 import 'controllers/chatUserController.dart';
 import 'controllers/theme_controller.dart';
 
-void main() async {
+void main() async{
   Get.put(dataChatUserTemp());
   Get.put(data_location_temp());
   Get.put(dataChatDetail());
   Get.put(dataStatusUserTemp());
-  Get.put(dataFeedUserTem());
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
