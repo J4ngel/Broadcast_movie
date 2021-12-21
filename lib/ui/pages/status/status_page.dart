@@ -72,6 +72,7 @@ class _StatusPageState extends State<StatusPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(child: TextField(
+                    maxLength: 35,
                     keyboardType: TextInputType.text,
                     controller: _status_controller,
                     onChanged: (text)=> setState((){}),

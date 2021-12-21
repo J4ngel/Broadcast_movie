@@ -1,10 +1,18 @@
-class location_users{
+class Location_users_model{
   String name;
-  String address;
+  String latitude;
+  String longitude;
   
-  location_users(
-    {
-      required this.name,
-      required this.address
-    });
+  Location_users_model(this.name, this.latitude, this.longitude);
+
+  Location_users_model.fromJson(Map<dynamic, dynamic>json)
+  :name = json['name'] as String,
+  latitude = json['latitude'] as String,
+  longitude = json['longitude'] as String;
+
+  Map<dynamic, dynamic>toJson() => <dynamic, dynamic>{
+    'name':name,
+    'latitude':latitude,
+    'longitude':longitude
+  };
 }
