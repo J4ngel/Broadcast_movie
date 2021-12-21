@@ -84,67 +84,9 @@ class _Near_me_pageState extends State<Near_me_page> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             _get_near_me_users(),
-            /* Obx(
-              () => ListView.builder(
-                itemCount: List_users.data_temp.length,
-                shrinkWrap: true,
-                padding: EdgeInsets.only(top: 16, left: 40, right: 40),
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return location_list(
-                      name: List_users.data_temp[index].name,
-                      address: List_users.data_temp[index].address);
-                },
-              ),
-            ), */
             Visibility(
               visible: is_visible,
-              child: Near_me_users(name: my_info.name, latitude: my_info.latitude, longitude: my_info.longitude)/* Container(
-                padding:
-                    EdgeInsets.only(left: 48, right: 48, top: 10, bottom: 10),
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                  left: 20, right: 20, top: 10, bottom: 10),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(25),
-                                  color: controller.darkMode
-                                      ? Color(0xff50879E)
-                                      : Color(0xffB44646)),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    my_info.name,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: const Color(0xffFFFFFF),
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  SizedBox(
-                                    height: 6,
-                                  ),
-                                  Text(
-                                    "Dirección: " + my_info.address,
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        color: const Color(0xffFFFFFF)),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ), */
+              child: Near_me_users(name: my_info.name, latitude: my_info.latitude, longitude: my_info.longitude)
             )
           ],
         ));
@@ -156,7 +98,10 @@ class _Near_me_pageState extends State<Near_me_page> {
         itemBuilder: (context, snapshot, animation, index){
           final json = snapshot.value as Map<dynamic, dynamic>;
           final location = Location_users_model.fromJson(json);
-          return Near_me_users(name: location.name, latitude: location.latitude, longitude: location.longitude);
+          return Visibility(
+            visible: FirebaseAuth.instance.currentUser!.email! != location.name,
+            child: Near_me_users(name: location.name, latitude: location.latitude, longitude: location.longitude)
+            );
         }
       )
     );
