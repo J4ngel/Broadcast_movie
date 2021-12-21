@@ -181,9 +181,12 @@ class _RegisterState extends State<Register> {
                                   padding: const EdgeInsets.all(10),
                                   fixedSize: const Size(250.0, 50.0)),
                               onPressed: () async {
-                                _.register();
-                                controllerRegister.emailController.clear();
-                                controllerRegister.passwordController.clear();
+                                _.register(
+                                    context,
+                                    controllerRegister.emailController,
+                                    controllerRegister.passwordController);
+                                // controllerRegister.emailController.clear();
+                                // controllerRegister.passwordController.clear();
                               },
                             ),
                             const SizedBox(height: 10),
