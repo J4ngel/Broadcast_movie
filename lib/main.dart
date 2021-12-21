@@ -1,6 +1,7 @@
 import 'package:broadcast_movie/controllers/ChatController.dart';
-import 'package:broadcast_movie/controllers/near_me_controller.dart';
-import 'package:broadcast_movie/controllers/statusUserController.dart';
+import 'package:broadcast_movie/domain/use_case/controllers/location_controller.dart';
+import 'package:broadcast_movie/domain/use_case/controllers/permissions_controller.dart';
+import 'package:broadcast_movie/domain/use_case/permission_manager.dart';
 import 'package:broadcast_movie/ui/pages/forgot_password/forgot_password.dart';
 import 'package:broadcast_movie/ui/pages/home/navegation.dart';
 import 'package:broadcast_movie/ui/pages/login/login.dart';
@@ -16,9 +17,7 @@ import 'controllers/theme_controller.dart';
 
 void main() async {
   Get.put(dataChatUserTemp());
-  Get.put(data_location_temp());
   Get.put(dataChatDetail());
-  Get.put(dataStatusUserTemp());
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   Get.put(ChatController());
@@ -49,6 +48,9 @@ class _MyAppState extends State<MyApp> {
       manager.changeTheme(isDarkMode: isDarkMode);
     });
     initializeTheme();
+    Permissions_controller permission_controller = Get.put(Permissions_controller());
+    permission_controller.permissions_manager = Permission_manager();
+    Get.lazyPut(() => Location_controller());
     super.initState();
   }
 

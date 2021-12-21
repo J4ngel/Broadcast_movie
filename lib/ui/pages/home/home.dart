@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
             children: [
               TextField(
                 decoration: InputDecoration(
-                    hintText: "Search...",
+                    hintText: "Buscar por...",
                     hintStyle: TextStyle(color: Colors.grey.shade600),
                     prefixIcon: Icon(Icons.search,
                         color: Colors.grey.shade600, size: 20),
