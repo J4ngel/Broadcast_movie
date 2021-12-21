@@ -25,7 +25,7 @@ class _FeedPageState extends State<FeedPage> {
     return Scaffold(
       backgroundColor: controller.darkMode
           ? const Color(0XFF262D31)
-          : const Color(0XFFF8F9FA),
+          : const Color(0XFFCFCFCF),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
@@ -44,7 +44,7 @@ class _FeedPageState extends State<FeedPage> {
                           fontWeight: FontWeight.bold,
                           color: controller.darkMode
                               ? const Color(0xffFFFFFF)
-                              : const Color(0xff262D31)),
+                              : const Color(0xff711A1A)),
                     ),
                     ElevatedButton(
                       style: ButtonStyle(
@@ -70,7 +70,7 @@ class _FeedPageState extends State<FeedPage> {
               children: [
                 Flexible(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    padding: EdgeInsets.only(left: 6, right:6, top: 15),//EdgeInsets.symmetric(horizontal: 12),
                     child: TextField(
                       keyboardType: TextInputType.text,
                       controller: _post_controller,
@@ -79,7 +79,18 @@ class _FeedPageState extends State<FeedPage> {
                         _publish_post();
                       },
                       decoration: InputDecoration(
-                        hintText: "Escribe aquí tu contenido :D..."
+                        hintText: "Escribe aquí tu contenido :D...",
+                        hintStyle: TextStyle(color: Colors.grey.shade600),
+                        prefixIcon: Icon(Icons.keyboard, color: Colors.grey.shade600, size: 20),
+                        filled: true,
+                        fillColor: Colors.grey.shade100,
+                        contentPadding: EdgeInsets.all(8),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(
+                              color: controller.darkMode
+                                ? Colors.grey.shade100
+                                : Color(0xff711A1A)))
                       ),
                     )
                   )
@@ -88,7 +99,10 @@ class _FeedPageState extends State<FeedPage> {
                   onPressed: (){
                     _publish_post();
                   }, 
-                  icon: Icon((_post_controller.text.length > 0)?Icons.beenhere_rounded:Icons.beenhere_outlined)
+                  icon: Icon(
+                    (_post_controller.text.length > 0)?Icons.beenhere_rounded:Icons.beenhere_outlined,
+                    color: controller.darkMode? Colors.white: Colors.black
+                  )
                 )
               ],
             )

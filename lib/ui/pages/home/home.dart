@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
         backgroundColor: controller.darkMode
             ? const Color(0XFF262D31)
-            : const Color(0XFFF8F9FA),
+            : const Color(0XFFCFCFCF),
         appBar: AppBar(
           title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
             children: [
               TextField(
                 decoration: InputDecoration(
-                    hintText: "Search...",
+                    hintText: "Buscar por...",
                     hintStyle: TextStyle(color: Colors.grey.shade600),
                     prefixIcon: Icon(Icons.search,
                         color: Colors.grey.shade600, size: 20),

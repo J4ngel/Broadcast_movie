@@ -28,7 +28,7 @@ class _StatusPageState extends State<StatusPage> {
     return Scaffold(
       backgroundColor: controller.darkMode
           ? const Color(0XFF262D31)
-          : const Color(0XFFF8F9FA),
+          : const Color(0XFFCFCFCF),
       appBar: AppBar(
         backgroundColor: controller.darkMode
             ? const Color(0xff085373)
@@ -78,14 +78,27 @@ class _StatusPageState extends State<StatusPage> {
                     onChanged: (text)=> setState((){}),
                     onSubmitted: (input){_update_state();},
                     decoration: InputDecoration(
-                      hintText: "Escribe aquí tu nuevo estado..."
+                      hintText: "Escribe aquí tu nuevo estado...",
+                      hintStyle: TextStyle(color: Colors.grey.shade600),
+                      prefixIcon: Icon(Icons.keyboard,
+                          color: Colors.grey.shade600, size: 20),
+                      filled: true,
+                      fillColor: Colors.grey.shade100,
+                      contentPadding: EdgeInsets.all(8),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(
+                              color: controller.darkMode
+                                  ? Colors.grey.shade100
+                                  : Color(0xff711A1A)))
                     ),
                   )
                 ),
                 IconButton(
                   onPressed: (){_update_state();}, 
                   icon: (_status_controller.text.length>0)?Icon(Icons.star_outlined)
-                                                          :Icon(Icons.star_outline_sharp)
+                                                          :Icon(Icons.star_outline_sharp),
+                          color: controller.darkMode? Colors.white: Colors.black,
                 )
               ]
             ),

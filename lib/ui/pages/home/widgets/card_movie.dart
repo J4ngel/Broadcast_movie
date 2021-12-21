@@ -1,4 +1,6 @@
+import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class card_movie extends StatelessWidget {
   String? img;
@@ -15,7 +17,12 @@ class card_movie extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController controller = Get.find();
+    
     return Card(
+      color: controller.darkMode?
+              const Color(0XFFCFCFCF)
+              :Colors.white,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -45,7 +52,7 @@ class card_movie extends StatelessWidget {
                 ),
             )
             ), 
-            IconButton(onPressed: (){}, icon: Icon(Icons.remove_red_eye))
+            //IconButton(onPressed: (){}, icon: Icon(Icons.remove_red_eye))
           ],
         ),
       ),

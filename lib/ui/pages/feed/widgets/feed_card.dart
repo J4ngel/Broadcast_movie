@@ -1,5 +1,7 @@
+import 'package:broadcast_movie/controllers/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:get/get.dart';
 
 class feed_card extends StatelessWidget {
   String user;
@@ -14,16 +16,24 @@ class feed_card extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController controller = Get.find();
+
     return Card(
+      color: controller.darkMode?
+            const Color(0XFFCFCFCF)
+            :Colors.white,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               width: 40,
               child: Center(
-                child: Icon(Icons.account_circle)
+                child: Icon(
+                  Icons.account_circle,
+                  size: 40,
+                )
               )
             ),
 
